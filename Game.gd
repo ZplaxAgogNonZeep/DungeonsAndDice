@@ -52,45 +52,6 @@ func _ready():
 	randomize()
 	build_level()
 	
-func _input(event):
-	if !event.is_pressed():
-		return
-		
-	if event.is_action("Left"):
-		try_move(-1, 0)
-	elif event.is_action("Right"):
-		try_move(1, 0)
-	elif event.is_action("Up"):
-		try_move(0, -1)
-	elif event.is_action("Down"):
-		try_move(0, 1)
-		
-func try_move(dx, dy):
-	var x = player_tile.x + dx
-	var y = player_tile.y + dy
-	
-	var tile_type = Tile.Stone
-	if x >= 0 && x < level_size.x && y >= 0 && y < level_size.y:
-		tile_type = map[x][y]
-		
-	match tile_type:
-		Tile.Floor:
-			player_tile = Vector2(x, y)
-			
-		Tile.Door:
-			set_tile(x, y, Tile.Floor)
-			
-		Tile.Hole:
-			level_num += 1
-			score += 20
-			if level_num < LEVEL_SIZES.size():
-				build_level()
-			else:
-				score += 1000
-				$CanvasLayer/Win.visible = true
-			
-	#update_visuals() #Must call after physics is dealt with
-	call_deferred("update_visuals")
 
 func build_level():
 	
