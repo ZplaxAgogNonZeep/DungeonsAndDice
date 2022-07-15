@@ -8,7 +8,8 @@
 [ext_resource path="res://art/frames/doors_all.png" type="Texture" id=6]
 [ext_resource path="res://art/frames/hole.png" type="Texture" id=7]
 [ext_resource path="res://art/black.png" type="Texture" id=8]
-[ext_resource path="res://EnemyManager.gd" type="Script" id=9]
+[ext_resource path="res://Enemy/EnemyManager.gd" type="Script" id=9]
+
 
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
