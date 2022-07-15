@@ -3,7 +3,7 @@ extends Node2D
 const LEVEL_ENEMY_COUNTS = [5, 8, 12, 18, 26]
 const TILE_SIZE = 16
 
-const EnemyScene = preload("res://Enemy.tscn")
+const EnemyScene = preload("res://Enemy/Enemy.tscn")
 
 class Enemy extends Reference:
 	var sprite_node
