@@ -31,7 +31,12 @@ var level_size
 
 onready var tile_map = $TileMap
 onready var visiblility_map = $VisibilityMap
-onready var player = $Player
+#onready var player = $Player
+
+# Getters and Setters ----------------------------------------------------------
+
+func get_player():
+	return $PlayerManager.get_player_if_there()
 
 # Game State ---------------------------------------------
 
@@ -116,7 +121,7 @@ func build_level():
 	connect_rooms()
 	
 	#Place player
-	
+	$PlayerManager.spawn_player()
 	var start_room = rooms.front()
 	var player_x = start_room.position.x + 1 + randi() % int(start_room.size.x - 2)
 	var player_y = start_room.position.y + 1 + randi() % int(start_room.size.y - 2)
@@ -136,7 +141,7 @@ func build_level():
 	
 	
 func update_visuals():
-	player.position = player_tile * TILE_SIZE
+	get_player().position = player_tile * TILE_SIZE
 	var player_center = tile_to_pixel_center(player_tile.x, player_tile.y)
 	var space_state = get_world_2d().direct_space_state
 	for x in range(level_size.x):
