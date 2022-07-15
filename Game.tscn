@@ -1,7 +1,6 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
-[ext_resource path="res://art/player.png" type="Texture" id=2]
 [ext_resource path="res://art/floor.png" type="Texture" id=3]
 [ext_resource path="res://art/wall.png" type="Texture" id=4]
 [ext_resource path="res://art/Dark.png" type="Texture" id=5]
@@ -9,6 +8,7 @@
 [ext_resource path="res://art/hole.png" type="Texture" id=7]
 [ext_resource path="res://art/black.png" type="Texture" id=8]
 [ext_resource path="res://Enemy/EnemyManager.gd" type="Script" id=9]
+[ext_resource path="res://Player/PlayerManager.gd" type="Script" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -152,18 +152,11 @@ cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 16, 0, 0, 0, 0, 0 )
 format = 1
 
-[node name="Player" type="Sprite" parent="."]
-position = Vector2( 366, 127 )
-texture = ExtResource( 2 )
-centered = false
+[node name="PlayerManager" type="Node2D" parent="."]
+script = ExtResource( 10 )
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( 16, 16 )
-current = true
-drag_margin_left = 0.0
-drag_margin_top = 0.0
-drag_margin_right = 0.0
-drag_margin_bottom = 0.0
+[node name="EnemyManager" type="Node2D" parent="."]
+script = ExtResource( 9 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -214,8 +207,5 @@ margin_top = 160.0
 margin_right = 427.0
 margin_bottom = 199.0
 text = "Restart"
-
-[node name="EnemyManager" type="Node2D" parent="."]
-script = ExtResource( 9 )
 
 [connection signal="pressed" from="CanvasLayer/Win/Button" to="." method="_on_Button_pressed"]
