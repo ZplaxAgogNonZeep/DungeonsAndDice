@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
-[ext_resource path="res://art/elf_f_idle_anim_f0.png" type="Texture" id=2]
+[ext_resource path="res://art/player.png" type="Texture" id=2]
 [ext_resource path="res://art/frames/floor_1.png" type="Texture" id=3]
 [ext_resource path="res://art/frames/wall_corner_front_right.png" type="Texture" id=4]
 [ext_resource path="res://art/Dark.png" type="Texture" id=5]
@@ -9,6 +9,7 @@
 [ext_resource path="res://art/frames/hole.png" type="Texture" id=7]
 [ext_resource path="res://art/black.png" type="Texture" id=8]
 [ext_resource path="res://EnemyManager.gd" type="Script" id=9]
+
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
