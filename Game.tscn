@@ -146,6 +146,9 @@ cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 16, 0, 0, 0, 0, 0 )
 format = 1
 
+[node name="EnemyManager" type="Node2D" parent="."]
+script = ExtResource( 9 )
+
 [node name="VisibilityMap" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
 cell_size = Vector2( 16, 16 )
@@ -214,8 +217,5 @@ margin_top = 160.0
 margin_right = 427.0
 margin_bottom = 199.0
 text = "Restart"
-
-[node name="EnemyManager" type="Node2D" parent="."]
-script = ExtResource( 9 )
 
 [connection signal="pressed" from="CanvasLayer/Win/Button" to="." method="_on_Button_pressed"]

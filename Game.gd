@@ -93,8 +93,7 @@ func build_level():
 	rooms.clear()
 	map.clear()
 	tile_map.clear()
-	
-	removeEnemies() #TODO: enem 
+	$EnemyManager.removeEnemies() 
 	
 	#Fill entire level with Stone
 	level_size = LEVEL_SIZES[level_num]
@@ -125,7 +124,7 @@ func build_level():
 	call_deferred("update_visuals")
 	
 	#Place enemies
-	placeEnemies() #TODO: enem
+	$EnemyManager.placeEnemies() 
 	
 	
 	#Place end hole
