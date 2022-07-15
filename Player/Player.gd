@@ -10,7 +10,7 @@ enum Tile {Floor, Wall, Stone, Door, Hole}
 var health = 3
 var max_health = 3
 
-# Controls and Movement
+# Controls and Movement ============================================================================
 
 func _input(event):
 	if !event.is_pressed():
@@ -46,9 +46,16 @@ func try_move(dx, dy):
 	#update_visuals() #Must call after physics is dealt with
 	game.call_deferred("update_visuals")
 
-# Health and Dying
+func tween_to(posn : Vector2):
+	# primerally called from update_visuals() to move the player
+	# to a new place smoothly
+	$Tween.interpolate_property(self, "position", position, posn, .1)
+	$Tween.start()
+
+# Health and Dying =================================================================================
 func take_damage(dam : int):
-	# Reduces health value by given int, if the variable is bigger than current health, calls die()
+	# Reduces health value by given int, if the variable 
+	# is bigger than current health, calls die()
 	if dam > health:
 		health -= dam
 	else:
