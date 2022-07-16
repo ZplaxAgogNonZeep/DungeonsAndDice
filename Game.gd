@@ -41,6 +41,9 @@ func get_player():
 func get_enemies():
 	return $EnemyManager.get_children()
 
+func get_items():
+	return $ItemManager.get_children()
+
 # UI Commands ======================================================================================
 
 func update_UI():
@@ -118,6 +121,8 @@ func build_level():
 	#Place enemies
 	$EnemyManager.placeEnemies() 
 	
+	#Place items
+	$ItemManager.place_items()
 	
 	#Place end hole
 	var end_room = rooms.back()

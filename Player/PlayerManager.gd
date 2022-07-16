@@ -22,4 +22,3 @@ func spawn_player():
 			get_child(i).queue_free()
 	
 	add_child(playerInstance)
-

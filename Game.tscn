@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
+[ext_resource path="res://Item/ItemManager.gd" type="Script" id=2]
 [ext_resource path="res://art/floor.png" type="Texture" id=3]
 [ext_resource path="res://art/wall.png" type="Texture" id=4]
 [ext_resource path="res://art/Dark.png" type="Texture" id=5]
@@ -208,6 +209,7 @@ margin_right = 427.0
 margin_bottom = 199.0
 text = "Restart"
 
+
 [node name="Lose" type="ColorRect" parent="CanvasLayer"]
 visible = false
 margin_top = 42.0
@@ -229,6 +231,10 @@ margin_top = 160.0
 margin_right = 427.0
 margin_bottom = 199.0
 text = "Restart"
+
+[node name="ItemManager" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
 
 [connection signal="pressed" from="CanvasLayer/Win/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Lose/Button" to="." method="_on_Button_pressed"]
