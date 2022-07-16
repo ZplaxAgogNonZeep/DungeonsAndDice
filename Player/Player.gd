@@ -57,9 +57,9 @@ func try_move(dx, dy):
 				for enemy in game.get_enemies():
 					if enemy.tile.x == x && enemy.tile.y == y:
 						enemy.take_damage(self, damage)
-#						if enemy.dead:
-#							enemy.remove()
-#							game.get_enemies().erase(enemy)
+						if has_item(0):
+							remove_item(0)
+
 						blocked = true
 						break
 				if !blocked:
@@ -93,14 +93,16 @@ func tween_to(posn : Vector2):
 func take_damage(dam : int):
 	# Reduces health value by given int, if the variable 
 	# is bigger than current health, calls die()
-
-	if dam < health:
-		health -= dam
+	if dam - defense < health:
+		health -= dam - defense
 		game.update_UI()
 	else:
 		health = 0
 		game.update_UI()
 		die()
+	
+	if has_item(1):
+		remove_item(1)
 
 
 func die():
@@ -136,3 +138,11 @@ func has_item(type : int) -> bool:
 			return true
 	return false
 
+func remove_item(type : int):
+	for i in range($Inventory.get_child_count()):
+		if $Inventory.get_child(i).item_type == type:
+			$Inventory.get_child(i).unequip()
+			$Inventory.get_child(i).queue_free()
+	yield(get_tree(), "idle_frame")
+	game.update_UI()
+	

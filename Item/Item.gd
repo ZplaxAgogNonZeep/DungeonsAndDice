@@ -20,4 +20,5 @@ func equip():
 
 func unequip():
 	# is called when the item is put away
+	print(get_parent().name)
 	get_parent().get_parent().damage -= damIncrease
