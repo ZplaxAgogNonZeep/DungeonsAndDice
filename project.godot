@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Rougelike Test"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://TitleMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
