@@ -15,12 +15,15 @@ var max_health = 3
 
 var damage = 1
 
+var hasPlayerMoved = false
+
 func _ready():
 	game.update_UI()
 
 # Controls and Movement ============================================================================
 
 func _input(event):
+	#hasPlayerMoved = false
 	if !event.is_pressed():
 		return
 		
@@ -58,7 +61,6 @@ func try_move(dx, dy):
 #							game.get_enemies().erase(enemy)
 						blocked = true
 						break
-						
 				if !blocked:
 					game.player_tile = Vector2(x, y)
 				
@@ -67,6 +69,8 @@ func try_move(dx, dy):
 				
 			Tile.Hole:
 				game.go_to_next_level()
+				
+
 			
 			
 	#update_visuals() #Must call after physics is dealt with
@@ -82,7 +86,8 @@ func tween_to(posn : Vector2):
 func take_damage(dam : int):
 	# Reduces health value by given int, if the variable 
 	# is bigger than current health, calls die()
-	if dam > health:
+	print("Player taking damage equal to: " + str(dam))
+	if dam < health:
 		health -= dam
 		game.update_UI()
 	else:
@@ -94,4 +99,11 @@ func take_damage(dam : int):
 func die():
 	#deletes the node and notifies the system
 	game._on_Button_pressed() # This is very dangrous
+	game.get_node("CanvasLayer/Lose").visible = true
 	queue_free()
+
+
+func _on_Tween_tween_completed(object, key):
+	print("TWEEN COMPLETE")
+	for enemy in game.get_enemies():
+		enemy.act(self)
