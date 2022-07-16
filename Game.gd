@@ -38,16 +38,20 @@ onready var visiblility_map = $VisibilityMap
 func get_player():
 	return $PlayerManager.get_player_if_there()
 
+func get_enemies():
+	return $EnemyManager.get_children()
+
 # UI Commands ======================================================================================
 
 func update_UI():
 	$CanvasLayer/HPLabel.text = str(get_player().health)
+	$CanvasLayer/ScoreLabel.text = "Score: " + str(score)
 
 
 # Game State ---------------------------------------------
 
 var player_tile #Tile the player is currently on
-var score = 0
+var score := 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -127,7 +131,7 @@ func update_visuals():
 				if !occlusion || (occlusion.position - test_point).length() < 1:
 					visiblility_map.set_cell(x, y, -1)
 					
-	$CanvasLayer/Score.text = "Score: " str(score) #TODO: fix livis mess
+#	$CanvasLayer/Score.text = "Score: " str(score) #TODO: fix livis mess
 	
 func tile_to_pixel_center(x, y):
 	return Vector2((x + 0.5) * TILE_SIZE, (y + 0.5) * TILE_SIZE)

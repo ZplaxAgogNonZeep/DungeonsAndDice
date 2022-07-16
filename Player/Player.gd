@@ -50,12 +50,12 @@ func try_move(dx, dy):
 		match tile_type:
 			Tile.Floor:
 				var blocked = false #TODO: fix livis mess
-				for enemy in enemies:
+				for enemy in game.get_enemies():
 					if enemy.tile.x == x && enemy.tile.y == y:
 						enemy.take_damage(self, 1)
-						if enemy.dead:
-							enemy.remove()
-							enemies.erase(enemy)
+#						if enemy.dead:
+#							enemy.remove()
+#							game.get_enemies().erase(enemy)
 						blocked = true
 						break
 						
