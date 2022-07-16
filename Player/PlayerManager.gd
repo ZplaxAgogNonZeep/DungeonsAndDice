@@ -18,7 +18,7 @@ func spawn_player():
 	
 	if get_child_count() > 0:
 		for i in range(get_child_count()):
-			print("deleting")
+
 			get_child(i).queue_free()
 	
 	add_child(playerInstance)

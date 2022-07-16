@@ -14,6 +14,7 @@ var health = 3
 var max_health = 3
 
 var damage = 1
+var defense = 0
 
 var hasPlayerMoved = false
 
@@ -63,8 +64,8 @@ func try_move(dx, dy):
 						break
 				if !blocked:
 					game.player_tile = Vector2(x, y)
-					for i in range(game.get_items().size()):
-						if game.get_items()[i].tile == game.player_tile:
+					for i in range(game.get_items(3).size()):
+						if game.get_items(3)[i].tile == game.player_tile and not has_item(game.get_items(3)[i].item_type):
 							game.get_node("ItemManager").pick_up_item_at(self, i)
 							break
 				
@@ -92,7 +93,7 @@ func tween_to(posn : Vector2):
 func take_damage(dam : int):
 	# Reduces health value by given int, if the variable 
 	# is bigger than current health, calls die()
-	print("Player taking damage equal to: " + str(dam))
+
 	if dam < health:
 		health -= dam
 		game.update_UI()
@@ -111,7 +112,7 @@ func die():
 
 
 func _on_Tween_tween_completed(object, key):
-	print("TWEEN COMPLETE")
+
 	for enemy in game.get_enemies():
 		enemy.act(self)
 
@@ -126,3 +127,10 @@ func add_item(item):
 		if $Inventory.get_child(i).item_name == item_name:
 			$Inventory.get_child(i).equip()
 		
+
+func has_item(type : int) -> bool:
+	for i in range($Inventory.get_child_count()):
+		if $Inventory.get_child(i).item_type == type:
+			return true
+	return false
+
