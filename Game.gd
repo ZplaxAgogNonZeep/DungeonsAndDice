@@ -115,6 +115,8 @@ func build_level():
 	#Place enemies
 	$EnemyManager.placeEnemies() 
 	
+	#Place items
+	$ItemManager.place_items()
 	
 	#Place end hole
 	var end_room = rooms.back()
