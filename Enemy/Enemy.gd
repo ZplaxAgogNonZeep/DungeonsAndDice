@@ -45,19 +45,21 @@ func take_damage(game, dmg):
 		get_parent().game.update_UI()
 		die()
 
-func act(game):
-	var my_point = game.enemy_pathfinding.get_closest_point(Vector3(tile.x, tile.y, 0))
-	var player_point = game.enemy_pathfinding.get_closest_point(Vector3(game.player_tile.x, game.player_tile.y, 0))
-	var path = game.enemy_pathfinding.get_point_path(my_point, player_point)
+func act(player):
+	# The parameter said that it was game but it was actually a player,
+	# the script demanded both...
+	var my_point = player.game.enemy_pathfinding.get_closest_point(Vector3(tile.x, tile.y, 0))
+	var player_point = player.game.enemy_pathfinding.get_closest_point(Vector3(player.game.player_tile.x, player.game.player_tile.y, 0))
+	var path = player.game.enemy_pathfinding.get_point_path(my_point, player_point)
 	if path:
 		assert(path.size() > 1)
 		var move_tile = Vector2(path[1].x, path[1].y)
 		
-		if move_tile == game.player_tile:
-			game.damage_player(1)
+		if move_tile == player.game.player_tile:
+			player.damage_player(1)
 		else:
 			var blocked = false
-			for enemy in game.enemies:
+			for enemy in player.game.get_enemies():
 				if enemy.tile == move_tile:
 					blocked = true
 					break
