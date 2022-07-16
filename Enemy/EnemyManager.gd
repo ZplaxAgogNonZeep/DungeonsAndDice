@@ -27,9 +27,14 @@ class Enemy extends Reference:
 
 var enemies = []
 
+func turn():
+	for i in range(get_child_count()):
+		get_child(i).new_turn()
+
+# Spawn and Remove Enemy ===========================================================================
 func removeEnemies():
 	for i in range(get_child_count()):
-		get_child(i).queue_free()
+		get_child(i).remove()
 	
 func placeEnemies():
 	var num_enemies = LEVEL_ENEMY_COUNTS[game.level_num]

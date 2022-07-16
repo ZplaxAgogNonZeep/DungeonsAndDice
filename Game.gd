@@ -106,6 +106,8 @@ func build_level():
 	
 func update_visuals():
 	get_player().tween_to(player_tile * TILE_SIZE)
+	$EnemyManager.turn()
+	# Visibility Map Stuff
 	var player_center = tile_to_pixel_center(player_tile.x, player_tile.y)
 	var space_state = get_world_2d().direct_space_state
 	for x in range(level_size.x):
