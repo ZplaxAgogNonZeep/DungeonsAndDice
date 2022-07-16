@@ -1,6 +1,6 @@
 extends Node2D
 
-const TILE_SIZE = 16
+const TILE_SIZE = 64
 
 #Level Sizes constants, tweak as needed
 const LEVEL_SIZES = [

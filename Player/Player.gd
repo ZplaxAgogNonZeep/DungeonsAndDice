@@ -1,4 +1,4 @@
-extends Sprite
+extends AnimatedSprite
 
 # NOTE:
 # Hitbox node is in group Player
@@ -13,6 +13,8 @@ enum Tile {Floor, Wall, Stone, Door, Hole}
 var health = 3
 var max_health = 3
 
+const SPEED = .2
+
 var damage = 1
 
 func _ready():
@@ -26,11 +28,15 @@ func _input(event):
 		
 	if event.is_action("Left"):
 		try_move(-1, 0)
+		animation = "WalkLeft"
 	elif event.is_action("Right"):
+		animation = "WalkRight"
 		try_move(1, 0)
 	elif event.is_action("Up"):
+		animation = "WalkUp"
 		try_move(0, -1)
 	elif event.is_action("Down"):
+		animation = "WalkDown"
 		try_move(0, 1)
 
 func try_move(dx, dy):
@@ -75,7 +81,7 @@ func try_move(dx, dy):
 func tween_to(posn : Vector2):
 	# primerally called from update_visuals() to move the player
 	# to a new place smoothly
-	$Tween.interpolate_property(self, "position", position, posn, .1)
+	$Tween.interpolate_property(self, "position", position, posn, SPEED, Tween.TRANS_LINEAR, Tween.TRANS_LINEAR)
 	$Tween.start()
 
 # Health and Dying =================================================================================
