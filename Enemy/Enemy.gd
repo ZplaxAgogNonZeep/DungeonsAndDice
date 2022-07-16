@@ -48,19 +48,13 @@ func take_damage(game, dmg):
 		die()
 
 func act(player):
-	# The parameter said that it was game but it was actually a player,
-	# the script demanded both...
 	var my_point = player.game.enemy_pathfinding.get_closest_point(Vector3(tile.x, tile.y, 0))
 	var player_point = player.game.enemy_pathfinding.get_closest_point(Vector3(player.game.player_tile.x, player.game.player_tile.y, 0))
 	var path = player.game.enemy_pathfinding.get_point_path(my_point, player_point)
 	if path:
 		assert(path.size() > 1)
 		var move_tile = Vector2(path[1].x, path[1].y)
-		print(name + "IS MOVING")
-		print("Move Tile: " + str(move_tile))
-		print("Player Tile: " + str(player.game.player_tile))
 		if move_tile == player.game.player_tile:
-			print("KILL")
 			player.take_damage(1)
 		else:
 			var blocked = false
@@ -69,8 +63,7 @@ func act(player):
 					blocked = true
 					break
 					
-			if !blocked && game.get_player().hasPlayerMoved:
-				game.get_player().hasPlayerMoved = false
+			if !blocked:
 				tile = move_tile
 				tween_to(tile * player.game.TILE_SIZE)
 

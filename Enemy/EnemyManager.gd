@@ -70,9 +70,9 @@ func placeEnemies():
 			enemy.position = enemy.tile * TILE_SIZE
 			add_child(enemy)
 
-func enemy_move():
-	for enemy in enemies:
-		enemy.position = enemy.tile * TILE_SIZE
+#func enemy_move():
+#	for enemy in enemies:
+#		enemy.position = enemy.tile * TILE_SIZE
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():

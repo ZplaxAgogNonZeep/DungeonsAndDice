@@ -147,7 +147,7 @@ func clear_path(tile):
 	
 func update_visuals():
 	get_player().tween_to(player_tile * TILE_SIZE)
-	$EnemyManager.turn()
+#	$EnemyManager.turn()
 	# Visibility Map Stuff
 
 	var player_center = tile_to_pixel_center(player_tile.x, player_tile.y)
@@ -163,12 +163,12 @@ func update_visuals():
 				if !occlusion || (occlusion.position - test_point).length() < 1:
 					visiblility_map.set_cell(x, y, -1)
 	
-	$EnemyManager.enemy_move()
+	
 	#for enemy in get_enemies():
 	#	enemy.position = enemy.tile * TILE_SIZE
 					
 #	$CanvasLayer/Score.text = "Score: " str(score) #TODO: fix livis mess
-	
+
 func tile_to_pixel_center(x, y):
 	return Vector2((x + 0.5) * TILE_SIZE, (y + 0.5) * TILE_SIZE)
 	

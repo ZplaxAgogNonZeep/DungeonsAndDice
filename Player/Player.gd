@@ -25,20 +25,15 @@ func _ready():
 func _input(event):
 	#hasPlayerMoved = false
 	if !event.is_pressed():
-		hasPlayerMoved = false
 		return
 		
 	if event.is_action("Left"):
-		hasPlayerMoved = true
 		try_move(-1, 0)
 	elif event.is_action("Right"):
-		hasPlayerMoved = true
 		try_move(1, 0)
 	elif event.is_action("Up"):
-		hasPlayerMoved = true
 		try_move(0, -1)
 	elif event.is_action("Down"):
-		hasPlayerMoved = true
 		try_move(0, 1)
 
 func try_move(dx, dy):
@@ -66,7 +61,6 @@ func try_move(dx, dy):
 #							game.get_enemies().erase(enemy)
 						blocked = true
 						break
-						
 				if !blocked:
 					game.player_tile = Vector2(x, y)
 				
@@ -76,8 +70,7 @@ func try_move(dx, dy):
 			Tile.Hole:
 				game.go_to_next_level()
 				
-	for enemy in game.get_enemies():
-		enemy.act(self)
+
 			
 			
 	#update_visuals() #Must call after physics is dealt with
@@ -108,4 +101,9 @@ func die():
 	game._on_Button_pressed() # This is very dangrous
 	game.get_node("CanvasLayer/Lose").visible = true
 	queue_free()
-	
+
+
+func _on_Tween_tween_completed(object, key):
+	print("TWEEN COMPLETE")
+	for enemy in game.get_enemies():
+		enemy.act(self)
