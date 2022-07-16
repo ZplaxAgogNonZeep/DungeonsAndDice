@@ -1,6 +1,8 @@
 extends Node2D
 
 const TILE_SIZE = 16
+onready var empty = preload("res://art/black.png")
+onready var hammer = preload("res://art/hammer.png")
 
 #Level Sizes constants, tweak as needed
 const LEVEL_SIZES = [
@@ -58,7 +60,9 @@ func update_UI():
 	$CanvasLayer/HPLabel.text = str(get_player().health)
 	$CanvasLayer/ScoreLabel.text = "Score: " + str(score)
 
+	
 	if get_player().has_item(0):
+		print("PLAYER HAS THE ITEM")
 		$CanvasLayer/WeaponSlot.texture = load("res://art/hammer.png")
 	else:
 		$CanvasLayer/WeaponSlot.texture = load("res://art/black.png")
@@ -66,7 +70,7 @@ func update_UI():
 	if get_player().has_item(1):
 		$CanvasLayer/ShieldSlot.texture = load("res://art/Shield.png")
 	else:
-		$CanvasLayer/WeaponSlot.texture = load("res://art/black.png")
+		$CanvasLayer/ShieldSlot.texture = load("res://art/black.png")
 	
 
 # Game State ---------------------------------------------

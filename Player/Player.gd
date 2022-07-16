@@ -126,6 +126,8 @@ func add_item(item):
 	for i in range($Inventory.get_child_count()):
 		if $Inventory.get_child(i).item_name == item_name:
 			$Inventory.get_child(i).equip()
+	
+	game.update_UI()
 		
 
 func has_item(type : int) -> bool:
