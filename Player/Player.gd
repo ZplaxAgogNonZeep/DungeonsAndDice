@@ -49,7 +49,18 @@ func try_move(dx, dy):
 	else:
 		match tile_type:
 			Tile.Floor:
-				game.player_tile = Vector2(x, y)
+				var blocked = false #TODO: fix livis mess
+				for enemy in enemies:
+					if enemy.tile.x == x && enemy.tile.y == y:
+						enemy.take_damage(self, 1)
+						if enemy.dead:
+							enemy.remove()
+							enemies.erase(enemy)
+						blocked = true
+						break
+						
+				if !blocked:
+					game.player_tile = Vector2(x, y)
 				
 			Tile.Door:
 				game.set_tile(x, y, Tile.Floor)

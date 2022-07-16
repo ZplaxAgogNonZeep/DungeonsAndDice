@@ -126,6 +126,8 @@ func update_visuals():
 				var occlusion = space_state.intersect_ray(player_center, test_point)
 				if !occlusion || (occlusion.position - test_point).length() < 1:
 					visiblility_map.set_cell(x, y, -1)
+					
+	$CanvasLayer/Score.text = "Score: " str(score) #TODO: fix livis mess
 	
 func tile_to_pixel_center(x, y):
 	return Vector2((x + 0.5) * TILE_SIZE, (y + 0.5) * TILE_SIZE)

@@ -11,7 +11,7 @@ texture = ExtResource( 1 )
 centered = false
 script = ExtResource( 2 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="HPBar" type="ColorRect" parent="."]
 margin_left = 3.0
 margin_top = -4.0
 margin_right = 13.0

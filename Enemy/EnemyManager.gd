@@ -24,6 +24,17 @@ class Enemy extends Reference:
 		
 	func remove():
 		sprite_node.queue_free()
+		
+	func take_damage(game, dmg):
+		if dead:
+			return
+			
+		hp = max(0, hp - dmg)
+		sprite_node.get_node("HPBar").rect_size.x = TILE_SIZE * hp / full_hp
+		
+		if hp == 0:
+			dead = true
+			game.score += 10 * full_hp
 
 var enemies = []
 
