@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Xelafina - XLLNN - ghostie dance.wav-0a01b488180ba14d26d7552f486484d2.sample"
+
+[deps]
+
+source_file="res://audio/music/Xelafina - XLLNN - ghostie dance.wav"
+dest_files=[ "res://.import/Xelafina - XLLNN - ghostie dance.wav-0a01b488180ba14d26d7552f486484d2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
