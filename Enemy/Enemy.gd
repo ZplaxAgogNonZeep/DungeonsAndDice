@@ -56,7 +56,7 @@ func act(player):
 		var move_tile = Vector2(path[1].x, path[1].y)
 		
 		if move_tile == player.game.player_tile:
-			player.damage_player(1)
+			player.take_damage(1)
 		else:
 			var blocked = false
 			for enemy in player.game.get_enemies():
@@ -66,26 +66,23 @@ func act(player):
 					
 			if !blocked:
 				tile = move_tile
+				tween_to(tile * player.game.TILE_SIZE)
 
 func new_turn():
-	
-	
-
-	
-	
-#	yield(get_tree(), "idle_frame")
-#	$RayCast2D.cast_to = Vector2(16 * dir, 0)
-#	$RayCast2D.force_raycast_update()
-#	if $RayCast2D.is_colliding():
-#		if $RayCast2D.get_collider().is_in_group("Player"):
-#			$RayCast2D.get_collider().get_parent().take_damage(damage)
-#		else:
-#			dir *= -1
-#			$RayCast2D.cast_to = Vector2(16 * dir, 0)
-#			$RayCast2D.force_raycast_update()
-#			if $RayCast2D.is_colliding():
-#				dir = 0
-	tween_to(position + Vector2(get_parent().game.TILE_SIZE * dir, 0))
+	pass
+##	yield(get_tree(), "idle_frame")
+##	$RayCast2D.cast_to = Vector2(16 * dir, 0)
+##	$RayCast2D.force_raycast_update()
+##	if $RayCast2D.is_colliding():
+##		if $RayCast2D.get_collider().is_in_group("Player"):
+##			$RayCast2D.get_collider().get_parent().take_damage(damage)
+##		else:
+##			dir *= -1
+##			$RayCast2D.cast_to = Vector2(16 * dir, 0)
+##			$RayCast2D.force_raycast_update()
+##			if $RayCast2D.is_colliding():
+##				dir = 0
+#	tween_to(position + Vector2(get_parent().game.TILE_SIZE * dir, 0))
 
 #func clear_path(tile):
 #	var new_point = enemy_pathfinding

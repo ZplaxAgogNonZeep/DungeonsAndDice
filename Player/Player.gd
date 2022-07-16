@@ -91,11 +91,12 @@ func take_damage(dam : int):
 	else:
 		health = 0
 		game.update_UI()
-		$CanvasLayer/Lose.visible = true
 		die()
 	
 
 func die():
 	#deletes the node and notifies the system
 	game._on_Button_pressed() # This is very dangrous
+	game.get_node("CanvasLayer/Lose").visible = true
 	queue_free()
+	
