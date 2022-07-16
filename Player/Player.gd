@@ -85,7 +85,8 @@ func tween_to(posn : Vector2):
 func take_damage(dam : int):
 	# Reduces health value by given int, if the variable 
 	# is bigger than current health, calls die()
-	if dam > health:
+	print("Player taking damage equal to: " + str(dam))
+	if dam < health:
 		health -= dam
 		game.update_UI()
 	else:
