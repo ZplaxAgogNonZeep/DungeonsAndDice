@@ -208,4 +208,27 @@ margin_right = 427.0
 margin_bottom = 199.0
 text = "Restart"
 
+[node name="Lose" type="ColorRect" parent="CanvasLayer"]
+visible = false
+margin_top = 42.0
+margin_right = 784.0
+margin_bottom = 438.0
+color = Color( 0.803922, 0.168627, 0.168627, 0.439216 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Lose"]
+margin_left = 312.0
+margin_top = 20.0
+margin_right = 450.0
+margin_bottom = 98.0
+text = "You Lose"
+align = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Lose"]
+margin_left = 342.0
+margin_top = 160.0
+margin_right = 427.0
+margin_bottom = 199.0
+text = "Restart"
+
 [connection signal="pressed" from="CanvasLayer/Win/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Lose/Button" to="." method="_on_Button_pressed"]

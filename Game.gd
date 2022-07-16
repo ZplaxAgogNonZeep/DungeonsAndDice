@@ -52,6 +52,7 @@ func update_UI():
 
 var player_tile #Tile the player is currently on
 var score := 0
+var enemy_pathfinding
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -82,6 +83,8 @@ func build_level():
 	map.clear()
 	tile_map.clear()
 	$EnemyManager.removeEnemies() 
+	
+	enemy_pathfinding = AStar.new() #NOTE: livi mess
 	
 	#Fill entire level with Stone
 	level_size = LEVEL_SIZES[level_num]
@@ -125,6 +128,22 @@ func build_level():
 	#Display what level the player is on
 	$CanvasLayer/LevelLabel.text = "Level: " + str(level_num)
 	
+func clear_path(tile):
+	var new_point = enemy_pathfinding.get_available_point_id()
+	enemy_pathfinding.add_point(new_point, Vector3(tile.x, tile.y, 0))
+	var points_to_connect = []
+	
+	if tile.x > 0 && map[tile.x - 1][tile.y] == Tile.Floor:
+		points_to_connect.append(enemy_pathfinding.get_closest_point(Vector3(tile.x - 1, tile.y, 0)))
+	if tile.y > 0 && map[tile.x][tile.y - 1] == Tile.Floor:
+		points_to_connect.append(enemy_pathfinding.get_closest_point(Vector3(tile.x, tile.y - 1, 0)))
+	if tile.x < 0 && map[tile.x + 1][tile.y] == Tile.Floor:
+		points_to_connect.append(enemy_pathfinding.get_closest_point(Vector3(tile.x + 1, tile.y, 0)))
+	if tile.y < 0 && map[tile.x][tile.y + 1] == Tile.Floor:
+		points_to_connect.append(enemy_pathfinding.get_closest_point(Vector3(tile.x, tile.y + 1, 0)))
+		
+	for point in points_to_connect:
+		enemy_pathfinding.connect_points(point, new_point)
 	
 func update_visuals():
 	get_player().tween_to(player_tile * TILE_SIZE)
@@ -143,6 +162,10 @@ func update_visuals():
 				var occlusion = space_state.intersect_ray(player_center, test_point)
 				if !occlusion || (occlusion.position - test_point).length() < 1:
 					visiblility_map.set_cell(x, y, -1)
+	
+	$EnemyManager.enemy_move()
+	#for enemy in get_enemies():
+	#	enemy.position = enemy.tile * TILE_SIZE
 					
 #	$CanvasLayer/Score.text = "Score: " str(score) #TODO: fix livis mess
 	
@@ -356,6 +379,9 @@ func cut_regions(free_regions, region_to_remove):
 func set_tile(x, y, type):
 	map[x][y] = type
 	tile_map.set_cell(x, y, type)
+	
+	if type == Tile.Floor:
+		clear_path(Vector2(x, y))
 
 
 func _on_Button_pressed():
@@ -363,3 +389,4 @@ func _on_Button_pressed():
 	score = 0
 	build_level()
 	$CanvasLayer/Win.visible = false
+	$CanvasLayer/Lose.visible = false

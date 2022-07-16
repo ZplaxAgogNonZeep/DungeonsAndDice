@@ -67,6 +67,9 @@ func try_move(dx, dy):
 				
 			Tile.Hole:
 				game.go_to_next_level()
+				
+	for enemy in game.get_enemies():
+		enemy.act(self)
 			
 			
 	#update_visuals() #Must call after physics is dealt with
@@ -88,6 +91,7 @@ func take_damage(dam : int):
 	else:
 		health = 0
 		game.update_UI()
+		$CanvasLayer/Lose.visible = true
 		die()
 	
 
