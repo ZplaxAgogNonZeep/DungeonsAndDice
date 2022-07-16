@@ -43,6 +43,7 @@ func try_move(dx, dy):
 		Tile.Hole:
 			game.go_to_next_level()
 			
+			
 	#update_visuals() #Must call after physics is dealt with
 	game.call_deferred("update_visuals")
 

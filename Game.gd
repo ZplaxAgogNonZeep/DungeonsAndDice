@@ -59,6 +59,8 @@ func go_to_next_level():
 	score += 20
 	if level_num < LEVEL_SIZES.size():
 		build_level()
+		yield(get_tree(), "idle_frame")
+		get_player().try_move(1,0)
 	else:
 		score += 1000
 		$CanvasLayer/Win.visible = true
@@ -96,6 +98,7 @@ func build_level():
 	var player_x = start_room.position.x + 1 + randi() % int(start_room.size.x - 2)
 	var player_y = start_room.position.y + 1 + randi() % int(start_room.size.y - 2)
 	player_tile = Vector2(player_x, player_y)
+	print("PLAYER TILE IS AT " + str(player_tile * TILE_SIZE))
 	#update_visuals() #Must call after physics is dealt with
 	call_deferred("update_visuals")
 	
@@ -104,7 +107,6 @@ func build_level():
 	
 	
 	#Place end hole
-	
 	var end_room = rooms.back()
 	var hole_x = end_room.position.x + 1 + randi() % int(end_room.size.x - 2)
 	var hole_y = end_room.position.y + 1 + randi() % int(end_room.size.y - 2)
@@ -116,6 +118,7 @@ func build_level():
 	
 func update_visuals():
 	get_player().position = player_tile * TILE_SIZE
+	print(get_player().position)
 	var player_center = tile_to_pixel_center(player_tile.x, player_tile.y)
 	var space_state = get_world_2d().direct_space_state
 	for x in range(level_size.x):

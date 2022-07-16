@@ -158,9 +158,6 @@ format = 1
 [node name="PlayerManager" type="Node2D" parent="."]
 script = ExtResource( 10 )
 
-[node name="EnemyManager" type="Node2D" parent="."]
-script = ExtResource( 9 )
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]

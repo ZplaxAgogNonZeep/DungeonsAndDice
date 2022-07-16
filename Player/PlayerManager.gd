@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var playerPath = preload("res://Player/Player.tscn")
+onready var game = get_tree().root.get_node("Game")
 
 func get_player_if_there():
 	#checks if the player is currently spawned in and returns it
@@ -17,6 +18,8 @@ func spawn_player():
 	
 	if get_child_count() > 0:
 		for i in range(get_child_count()):
+			print("deleting")
 			get_child(i).queue_free()
-		
+	
 	add_child(playerInstance)
+
