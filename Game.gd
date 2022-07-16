@@ -53,6 +53,16 @@ func _ready():
 	build_level()
 	
 
+func go_to_next_level():
+	# Called when the player enters a hole, builds a new level and increases score
+	level_num += 1
+	score += 20
+	if level_num < LEVEL_SIZES.size():
+		build_level()
+	else:
+		score += 1000
+		$CanvasLayer/Win.visible = true
+
 func build_level():
 	
 	# Clearing previous map
