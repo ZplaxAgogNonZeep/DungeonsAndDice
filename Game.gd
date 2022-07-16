@@ -38,6 +38,12 @@ onready var visiblility_map = $VisibilityMap
 func get_player():
 	return $PlayerManager.get_player_if_there()
 
+# UI Commands ======================================================================================
+
+func update_UI():
+	$CanvasLayer/HPLabel.text = str(get_player().health)
+
+
 # Game State ---------------------------------------------
 
 var player_tile #Tile the player is currently on
