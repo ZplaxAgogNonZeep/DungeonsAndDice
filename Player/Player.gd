@@ -61,6 +61,10 @@ func try_move(dx, dy):
 						
 				if !blocked:
 					game.player_tile = Vector2(x, y)
+					for i in range(game.get_items().size()):
+						if game.get_items()[i].tile == game.player_tile:
+							game.get_node("ItemManager").pick_up_item_at(self, i)
+							break
 				
 			Tile.Door:
 				game.set_tile(x, y, Tile.Floor)
@@ -78,6 +82,8 @@ func tween_to(posn : Vector2):
 	$Tween.interpolate_property(self, "position", position, posn, .1)
 	$Tween.start()
 
+
+
 # Health and Dying =================================================================================
 func take_damage(dam : int):
 	# Reduces health value by given int, if the variable 
@@ -89,9 +95,22 @@ func take_damage(dam : int):
 		health = 0
 		game.update_UI()
 		die()
-	
+
 
 func die():
 	#deletes the node and notifies the system
 	game._on_Button_pressed() # This is very dangrous
 	queue_free()
+
+# Item Stuff =======================================================================================
+
+func add_item(item):
+	var new_item = item.instance()
+	var item_name = new_item.item_name
+	$Inventory.add_child(new_item)
+	
+	for i in range($Inventory.get_child_count()):
+		if $Inventory.get_child(i).item_name == item_name:
+			$Inventory.get_child(i).equip()
+		
+	
