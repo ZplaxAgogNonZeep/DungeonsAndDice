@@ -47,7 +47,7 @@ func turn():
 # Spawn and Remove Enemy ===========================================================================
 func removeEnemies():
 	for i in range(get_child_count()):
-		get_child(i).remove()
+		get_child(i).queue_free()
 	
 func placeEnemies():
 	var num_enemies = LEVEL_ENEMY_COUNTS[game.level_num]

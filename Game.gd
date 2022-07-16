@@ -63,6 +63,18 @@ func _ready():
 	build_level()
 	
 
+func go_to_next_level():
+	# Called when the player enters a hole, builds a new level and increases score
+	level_num += 1
+	score += 20
+	if level_num < LEVEL_SIZES.size():
+		build_level()
+		yield(get_tree(), "idle_frame")
+		get_player().try_move(1,0)
+	else:
+		score += 1000
+		$CanvasLayer/Win.visible = true
+
 func build_level():
 	
 	# Clearing previous map
@@ -96,6 +108,7 @@ func build_level():
 	var player_x = start_room.position.x + 1 + randi() % int(start_room.size.x - 2)
 	var player_y = start_room.position.y + 1 + randi() % int(start_room.size.y - 2)
 	player_tile = Vector2(player_x, player_y)
+	print("PLAYER TILE IS AT " + str(player_tile * TILE_SIZE))
 	#update_visuals() #Must call after physics is dealt with
 	call_deferred("update_visuals")
 	
@@ -104,7 +117,6 @@ func build_level():
 	
 	
 	#Place end hole
-	
 	var end_room = rooms.back()
 	var hole_x = end_room.position.x + 1 + randi() % int(end_room.size.x - 2)
 	var hole_y = end_room.position.y + 1 + randi() % int(end_room.size.y - 2)
@@ -118,6 +130,7 @@ func update_visuals():
 	get_player().tween_to(player_tile * TILE_SIZE)
 	$EnemyManager.turn()
 	# Visibility Map Stuff
+
 	var player_center = tile_to_pixel_center(player_tile.x, player_tile.y)
 	var space_state = get_world_2d().direct_space_state
 	for x in range(level_size.x):
