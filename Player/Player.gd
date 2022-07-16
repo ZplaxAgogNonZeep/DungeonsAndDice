@@ -15,22 +15,30 @@ var max_health = 3
 
 var damage = 1
 
+var hasPlayerMoved = false
+
 func _ready():
 	game.update_UI()
 
 # Controls and Movement ============================================================================
 
 func _input(event):
+	#hasPlayerMoved = false
 	if !event.is_pressed():
+		hasPlayerMoved = false
 		return
 		
 	if event.is_action("Left"):
+		hasPlayerMoved = true
 		try_move(-1, 0)
 	elif event.is_action("Right"):
+		hasPlayerMoved = true
 		try_move(1, 0)
 	elif event.is_action("Up"):
+		hasPlayerMoved = true
 		try_move(0, -1)
 	elif event.is_action("Down"):
+		hasPlayerMoved = true
 		try_move(0, 1)
 
 func try_move(dx, dy):

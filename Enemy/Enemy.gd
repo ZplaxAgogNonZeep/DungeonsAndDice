@@ -9,6 +9,8 @@ var damage = 1
 
 var tile
 
+onready var game = get_tree().root.get_node("Game")
+
 #var enemy_pathfinding #Livi put this in game.gd
 #enemy_pathfinding = Astar.new() #Livi put this in game.gd
 
@@ -67,7 +69,8 @@ func act(player):
 					blocked = true
 					break
 					
-			if !blocked:
+			if !blocked && game.get_player().hasPlayerMoved:
+				game.get_player().hasPlayerMoved = false
 				tile = move_tile
 				tween_to(tile * player.game.TILE_SIZE)
 
