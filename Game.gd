@@ -127,10 +127,6 @@ func build_level():
 	
 	
 func update_visuals():
-
-	get_player().position = player_tile * TILE_SIZE
-	print(get_player().position)
-
 	get_player().tween_to(player_tile * TILE_SIZE)
 	$EnemyManager.turn()
 	# Visibility Map Stuff
