@@ -55,7 +55,7 @@ func try_move(dx, dy):
 				var blocked = false #TODO: fix livis mess
 				for enemy in game.get_enemies():
 					if enemy.tile.x == x && enemy.tile.y == y:
-						enemy.take_damage(self, 1)
+						enemy.take_damage(self, damage)
 #						if enemy.dead:
 #							enemy.remove()
 #							game.get_enemies().erase(enemy)

@@ -11,6 +11,7 @@ func equip():
 	# is called when the item is first picked up
 	# function MUST exist
 	get_parent().get_parent().damage += damIncrease
+	print(get_parent().get_parent().damage)
 
 func unequip():
 	# is called when the item is put away

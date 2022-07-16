@@ -18,7 +18,7 @@ var items = []
 
 func pick_up_item_at(player, index : int):
 	player.add_item(get_child(index).path)
-	queue_free()
+	get_child(index).queue_free()
 
 func place_items():
 	var num_items = LEVEL_ITEM_COUNTS[game.level_num]
