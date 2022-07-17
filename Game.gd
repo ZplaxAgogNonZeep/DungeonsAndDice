@@ -29,6 +29,10 @@ var map = []
 var rooms = []
 var level_size
 
+# Audio Variables ==================================================================================
+var music_volume = -12
+var sfx_volume = -12
+
 # Node refs ----------------------------------------------
 
 onready var tile_map = $TileMap
@@ -83,6 +87,10 @@ var enemy_pathfinding
 func _ready():
 	#Scaling for pixel art, not perfect
 	OS.set_window_size(Vector2(1280, 720))
+	
+	# Audio Sounds :) ==============================================================================
+	$AudioManager.startTrack("FrogSong", 1, true)
+	
 	
 	#Build random level
 	randomize()
