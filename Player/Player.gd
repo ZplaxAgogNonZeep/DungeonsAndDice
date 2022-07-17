@@ -42,6 +42,7 @@ func _input(event):
 		try_move(0, 1)
 
 func try_move(dx, dy):
+	#print(game.map)
 	var x = game.player_tile.x + dx
 	var y = game.player_tile.y + dy
 	
@@ -122,6 +123,7 @@ func _on_Tween_tween_completed(object, key):
 
 	for enemy in game.get_enemies():
 		enemy.act(self)
+	#print("Enemy tween")
 
 # Item Stuff =======================================================================================
 
