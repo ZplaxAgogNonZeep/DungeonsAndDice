@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Item/ItemManager.gd" type="Script" id=2]
@@ -15,6 +15,9 @@
 [ext_resource path="res://art/Dice2.png" type="Texture" id=13]
 [ext_resource path="res://art/Dice1.png" type="Texture" id=14]
 [ext_resource path="res://UI/HitDice.gd" type="Script" id=15]
+[ext_resource path="res://art/BlankHammer.png" type="Texture" id=16]
+[ext_resource path="res://art/BlankShield.png" type="Texture" id=17]
+[ext_resource path="res://art/fonts/04B_30_.TTF" type="DynamicFontData" id=18]
 
 [sub_resource type="TileSet" id=2]
 0/name = "black.png 0"
@@ -31,6 +34,22 @@
 0/shape_one_way_margin = 0.0
 0/shapes = [  ]
 0/z_index = 0
+
+[sub_resource type="DynamicFont" id=3]
+size = 17
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 17
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 17
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 17
+font_data = ExtResource( 18 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -68,18 +87,19 @@ __meta__ = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-margin_right = 758.0
-margin_bottom = 42.0
+margin_right = 1024.0
+margin_bottom = 64.0
 color = Color( 0.117647, 0.0117647, 0.0117647, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="LevelLabel" type="Label" parent="CanvasLayer"]
-margin_left = 672.0
+margin_left = 888.0
 margin_top = 8.0
-margin_right = 746.0
+margin_right = 1016.0
 margin_bottom = 38.0
+custom_fonts/font = SubResource( 3 )
 text = "Level:"
 
 [node name="HPLabel" type="Label" parent="CanvasLayer"]
@@ -89,6 +109,7 @@ margin_bottom = 30.0
 text = "HP:"
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 0.514
 margin_left = 520.0
@@ -118,39 +139,46 @@ margin_right = 427.0
 margin_bottom = 199.0
 text = "Restart"
 
-[node name="Lose" type="ColorRect" parent="CanvasLayer"]
-visible = false
-margin_top = 42.0
-margin_right = 784.0
-margin_bottom = 438.0
-color = Color( 0.803922, 0.168627, 0.168627, 0.439216 )
-
-[node name="Label" type="Label" parent="CanvasLayer/Lose"]
-margin_left = 312.0
-margin_top = 20.0
-margin_right = 450.0
-margin_bottom = 98.0
-text = "You Lose"
+[node name="WeaponLabel" type="Label" parent="CanvasLayer"]
+margin_left = 416.0
+margin_top = 8.0
+margin_right = 512.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 4 )
+text = "Weapon"
 align = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/Lose"]
-margin_left = 342.0
-margin_top = 160.0
-margin_right = 427.0
-margin_bottom = 199.0
-text = "Restart"
+[node name="WeaponLabel3" type="Label" parent="CanvasLayer"]
+margin_left = 80.0
+margin_right = 176.0
+margin_bottom = 17.0
+custom_fonts/font = SubResource( 4 )
+text = "HP"
+align = 1
+
+[node name="WeaponLabel2" type="Label" parent="CanvasLayer"]
+margin_left = 584.0
+margin_top = 8.0
+margin_right = 680.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 5 )
+text = "Shield"
+align = 1
 
 [node name="WeaponSlot" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 344, 24 )
+position = Vector2( 464, 56 )
+texture = ExtResource( 16 )
 
 [node name="ShieldSlot" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 424, 24 )
+position = Vector2( 632, 56 )
+texture = ExtResource( 17 )
 
 [node name="OptionsMenu" parent="CanvasLayer" instance=ExtResource( 11 )]
 
 [node name="HitDice" type="Control" parent="CanvasLayer"]
+margin_top = 16.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = 56.0
 script = ExtResource( 15 )
 
 [node name="Dice0" type="Sprite" parent="CanvasLayer/HitDice"]
@@ -176,6 +204,28 @@ texture = ExtResource( 4 )
 [node name="Dice5" type="Sprite" parent="CanvasLayer/HitDice"]
 position = Vector2( 232, 24 )
 texture = ExtResource( 7 )
+
+[node name="Lose" type="ColorRect" parent="CanvasLayer"]
+visible = false
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.803922, 0.168627, 0.168627, 0.439216 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Lose"]
+margin_left = 448.0
+margin_top = 280.0
+margin_right = 586.0
+margin_bottom = 358.0
+custom_fonts/font = SubResource( 6 )
+text = "You Lose"
+align = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Lose"]
+margin_left = 472.0
+margin_top = 304.0
+margin_right = 557.0
+margin_bottom = 343.0
+text = "Restart"
 
 [node name="ItemManager" type="Node2D" parent="."]
 script = ExtResource( 2 )
