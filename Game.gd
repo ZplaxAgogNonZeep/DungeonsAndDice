@@ -98,8 +98,9 @@ func go_to_next_level():
 		yield(get_tree(), "idle_frame")
 		get_player().try_move(1,0)
 	else:
-		score += 1000
-		$CanvasLayer/Win.visible = true
+		get_tree().change_scene("res://BossFight.tscn")
+		#score += 1000
+		#$CanvasLayer/Win.visible = true
 
 func build_level():
 	
