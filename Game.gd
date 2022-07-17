@@ -34,8 +34,8 @@ onready var visiblility_map = $VisibilityMap
 #onready var player = $Player
 
 # Audio Variables ==================================================================================
-var sfx_volume = 0
-var music_volume = -24
+var sfx_volume = -12
+var music_volume = -12
 
 # Getters and Setters ----------------------------------------------------------
 

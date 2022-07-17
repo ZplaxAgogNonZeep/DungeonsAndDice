@@ -1,7 +1,14 @@
 extends Node
 
-
+onready var game = get_tree().root.get_node("Game")
 # Manages various audio track signals. 
+
+func _ready():
+	
+	changeVolume(0, game.sfx_volume)
+	
+	changeVolume(0, game.music_volume)
+	
 
 func startTrack(trackName : String, trackType : int, isLooping : bool):
 	# Takes a track and decides what to do with it with the given variables.
