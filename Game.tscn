@@ -2,11 +2,7 @@
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Item/ItemManager.gd" type="Script" id=2]
-[ext_resource path="res://art/floor.png" type="Texture" id=3]
-[ext_resource path="res://art/wall.png" type="Texture" id=4]
-[ext_resource path="res://art/Dark.png" type="Texture" id=5]
-[ext_resource path="res://art/door.png" type="Texture" id=6]
-[ext_resource path="res://art/hole.png" type="Texture" id=7]
+[ext_resource path="res://art/tilesets/DefaultTileSet.tres" type="TileSet" id=3]
 [ext_resource path="res://art/black.png" type="Texture" id=8]
 [ext_resource path="res://Enemy/EnemyManager.gd" type="Script" id=9]
 [ext_resource path="res://Player/PlayerManager.gd" type="Script" id=10]
@@ -162,7 +158,12 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 script = ExtResource( 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
+
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+
 tile_set = SubResource( 1 )
+
 cell_custom_transform = Transform2D( 16, 0, 0, 0, 0, 0 )
 format = 1
 __meta__ = {
