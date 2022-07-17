@@ -151,3 +151,7 @@ func remove_item(type : int):
 	yield(get_tree(), "idle_frame")
 	game.update_UI()
 	
+func rolldice(sides):
+	var roll = randi() % sides + 1
+	print("Player rolled ", roll)
+	return roll

@@ -5,7 +5,7 @@ extends AnimatedSprite
 var health = 2
 var max_health = 2
 var dir = 1
-var damage = 1
+#var damage = 1
 
 var tile
 
@@ -55,7 +55,7 @@ func act(player):
 		assert(path.size() > 1)
 		var move_tile = Vector2(path[1].x, path[1].y)
 		if move_tile == player.game.player_tile:
-			player.take_damage(1)
+			player.take_damage(rolldice(2))
 		else:
 			var blocked = false
 			for enemy in player.game.get_enemies():
@@ -101,7 +101,10 @@ func new_turn():
 #		enemy_pathfinding.connect_points(point, new_point)
 	
 
-
+func rolldice(sides):
+	var roll = randi() % sides + 1
+	print("Enemy rolled ", roll)
+	return roll
 
 func tween_to(posn : Vector2):
 	$Tween.interpolate_property(self, "position", position, posn, .1)
