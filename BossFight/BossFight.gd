@@ -45,6 +45,8 @@ func build_level():
 	var player_y = 20
 	player_tile = Vector2(player_x, player_y)
 	
+	spawn_fireball()
+	
 func add_floor():
 	#Bottom left
 	tile_map.set_cell(2,30,Tile.Floor)
@@ -111,3 +113,12 @@ func update_visuals():
 					
 func tile_to_pixel_center(x, y):
 	return Vector2((x + 0.5) * TILE_SIZE, (y + 0.5) * TILE_SIZE)
+
+func spawn_fireball():
+	var x = 3
+	var y = 3
+	
+	var enemy = preload("res://Enemy/Fireball.tscn").instance()
+	enemy.tile = Vector2(x, y)
+	enemy.position = enemy.tile * TILE_SIZE
+	add_child(enemy)
