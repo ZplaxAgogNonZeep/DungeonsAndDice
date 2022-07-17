@@ -1,6 +1,6 @@
 extends Node2D
 
-const TILE_SIZE = 16
+const TILE_SIZE = 64
 
 const LEVEL_ITEM_COUNTS = [2, 4, 6, 8, 10]
 

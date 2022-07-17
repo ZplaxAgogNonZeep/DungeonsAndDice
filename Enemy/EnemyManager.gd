@@ -1,7 +1,7 @@
 extends Node2D
 
 const LEVEL_ENEMY_COUNTS = [5, 8, 12, 18, 26]
-const TILE_SIZE = 16
+const TILE_SIZE = 64
 
 onready var game = get_tree().root.get_node("Game")
 const EnemyScene = preload("res://Enemy/Enemy.tscn")
