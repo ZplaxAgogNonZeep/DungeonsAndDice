@@ -8,7 +8,7 @@
 [ext_resource path="res://art/Dice3.png" type="Texture" id=6]
 [ext_resource path="res://art/Dice6.png" type="Texture" id=7]
 [ext_resource path="res://art/black.png" type="Texture" id=8]
-[ext_resource path="res://Enemy/EnemyManager.gd" type="Script" id=9]
+[ext_resource path="res://Enemy/EnemyManager.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Player/PlayerManager.tscn" type="PackedScene" id=10]
 [ext_resource path="res://OptionsMenu.tscn" type="PackedScene" id=11]
 [ext_resource path="res://audio/AudioManager.tscn" type="PackedScene" id=12]
@@ -62,11 +62,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="EnemyManager" type="Node2D" parent="."]
-script = ExtResource( 9 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="EnemyManager" parent="." instance=ExtResource( 9 )]
 
 [node name="VisibilityMap" type="TileMap" parent="."]
 visible = false
