@@ -5,6 +5,9 @@ const LEVEL_SIZES = [
 	Vector2(16, 32)
 ]
 
+var sfx_volume = .12
+var music_volume = .12
+
 var map = []
 
 enum Tile {Floor, Wall, Stone, Door, Hole}
@@ -27,7 +30,7 @@ func get_items(ha):
 
 func _ready():
 	#OS.set_window_size(Vector2(1280, 720))
-	
+	$AudioManager.startTrack("FrogSong", 1, true)
 	build_level()
 
 func build_level():
@@ -137,4 +140,9 @@ func spawn_fireball():
 	enemy.tile = Vector2(x, y)
 	enemy.position = enemy.tile * TILE_SIZE
 	$EnemyManager.add_child(enemy)
+
+func endGame():
+	$Credits.visible = true
+	get_tree().paused = true
+	
 

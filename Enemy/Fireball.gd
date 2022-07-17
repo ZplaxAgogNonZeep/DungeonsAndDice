@@ -14,10 +14,9 @@ func _ready():
 	pass # Replace with function body.
 
 func act(player):
-	print("act was called")
 	var move_tile = Vector2(tile.x, tile.y +1)
 	if move_tile == player.game.player_tile:
-		player.take_damage(1)
+		player.take_damage(100)
 	else:
 		var blocked = false
 		for enemy in player.game.get_enemies():
