@@ -14,6 +14,7 @@ var health = 3
 var max_health = 3
 
 var damage = 1
+var defense = 0
 
 var hasPlayerMoved = false
 
@@ -55,14 +56,19 @@ func try_move(dx, dy):
 				var blocked = false #TODO: fix livis mess
 				for enemy in game.get_enemies():
 					if enemy.tile.x == x && enemy.tile.y == y:
-						enemy.take_damage(self, 1)
-#						if enemy.dead:
-#							enemy.remove()
-#							game.get_enemies().erase(enemy)
+						enemy.take_damage(self, damage)
+						if has_item(0):
+							remove_item(0)
+
 						blocked = true
 						break
 				if !blocked:
 					game.player_tile = Vector2(x, y)
+					for i in range(game.get_items(3).size()):
+						if game.get_items(3)[i].tile == game.player_tile and not has_item(game.get_items(3)[i].item_type):
+							
+							game.get_node("ItemManager").pick_up_item_at(self, i)
+							break
 				
 			Tile.Door:
 				game.set_tile(x, y, Tile.Floor)
@@ -82,19 +88,23 @@ func tween_to(posn : Vector2):
 	$Tween.interpolate_property(self, "position", position, posn, .1)
 	$Tween.start()
 
+
+
 # Health and Dying =================================================================================
 func take_damage(dam : int):
 	# Reduces health value by given int, if the variable 
 	# is bigger than current health, calls die()
-	print("Player taking damage equal to: " + str(dam))
-	if dam < health:
-		health -= dam
+	if dam - defense < health:
+		health -= dam - defense
 		game.update_UI()
 	else:
 		health = 0
 		game.update_UI()
 		die()
 	
+	if has_item(1):
+		remove_item(1)
+
 
 func die():
 	#deletes the node and notifies the system
@@ -103,7 +113,37 @@ func die():
 	queue_free()
 
 
+
 func _on_Tween_tween_completed(object, key):
-	print("TWEEN COMPLETE")
+
 	for enemy in game.get_enemies():
 		enemy.act(self)
+
+# Item Stuff =======================================================================================
+
+func add_item(item):
+	var new_item = item.instance()
+	var item_name = new_item.item_name
+	$Inventory.add_child(new_item)
+	
+	for i in range($Inventory.get_child_count()):
+		if $Inventory.get_child(i).item_name == item_name:
+			$Inventory.get_child(i).equip()
+	
+	game.update_UI()
+		
+
+func has_item(type : int) -> bool:
+	for i in range($Inventory.get_child_count()):
+		if $Inventory.get_child(i).item_type == type:
+			return true
+	return false
+
+func remove_item(type : int):
+	for i in range($Inventory.get_child_count()):
+		if $Inventory.get_child(i).item_type == type:
+			$Inventory.get_child(i).unequip()
+			$Inventory.get_child(i).queue_free()
+	yield(get_tree(), "idle_frame")
+	game.update_UI()
+	
