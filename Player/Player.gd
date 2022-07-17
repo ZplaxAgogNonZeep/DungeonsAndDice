@@ -10,8 +10,8 @@ onready var game = get_tree().root.get_node("Game")
 enum Tile {Floor, Wall, Stone, Door, Hole}
 
 # Health Variables
-var health = 3
-var max_health = 3
+var health = 6
+var max_health = 6
 
 var damage #= 1
 var defense = 0
@@ -153,5 +153,9 @@ func remove_item(type : int):
 	
 func rolldice(sides):
 	var roll = randi() % sides + 1
+	
+	if (has_item(0)):
+		roll += randi() % sides + 1
+	
 	print("Player rolled ", roll)
 	return roll
