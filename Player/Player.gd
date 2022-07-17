@@ -70,7 +70,7 @@ func try_move(dx, dy):
 					game.player_tile = Vector2(x, y)
 					for i in range(game.get_items(3).size()):
 						if game.get_items(3)[i].tile == game.player_tile and not has_item(game.get_items(3)[i].item_type):
-							
+							print(has_item(game.get_items(3)[i].item_type))
 							game.get_node("ItemManager").pick_up_item_at(self, i)
 							break
 				
@@ -144,6 +144,7 @@ func has_item(type : int) -> bool:
 	return false
 
 func remove_item(type : int):
+	print("REMOVING ITEM")
 	for i in range($Inventory.get_child_count()):
 		if $Inventory.get_child(i).item_type == type:
 			$Inventory.get_child(i).unequip()
