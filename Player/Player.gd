@@ -146,6 +146,9 @@ func has_item(type : int) -> bool:
 func remove_item(type : int):
 	print("REMOVING ITEM")
 	for i in range($Inventory.get_child_count()):
+		print("checking types:")
+		print($Inventory.get_child(i).item_type)
+		print(type)
 		if $Inventory.get_child(i).item_type == type:
 			$Inventory.get_child(i).unequip()
 			$Inventory.get_child(i).queue_free()

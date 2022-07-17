@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Item/ItemManager.gd" type="Script" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://art/BlankShield.png" type="Texture" id=17]
 [ext_resource path="res://art/fonts/04B_30_.TTF" type="DynamicFontData" id=18]
 [ext_resource path="res://art/TapeUi.png" type="Texture" id=19]
+[ext_resource path="res://art/DiceOutlinepng.png" type="Texture" id=20]
 
 [sub_resource type="TileSet" id=2]
 0/name = "black.png 0"
@@ -38,14 +39,20 @@
 
 [sub_resource type="DynamicFont" id=3]
 size = 17
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 18 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 17
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 18 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 17
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 18 )
 
 [sub_resource type="DynamicFont" id=6]
@@ -183,33 +190,57 @@ texture = ExtResource( 17 )
 
 [node name="OptionsMenu" parent="CanvasLayer" instance=ExtResource( 11 )]
 
+[node name="DiceOutlinepng" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 32, 40 )
+texture = ExtResource( 20 )
+
+[node name="DiceOutlinepng2" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 72, 40 )
+texture = ExtResource( 20 )
+
+[node name="DiceOutlinepng3" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 112, 40 )
+texture = ExtResource( 20 )
+
+[node name="DiceOutlinepng4" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 152, 40 )
+texture = ExtResource( 20 )
+
+[node name="DiceOutlinepng5" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 192, 40 )
+texture = ExtResource( 20 )
+
+[node name="DiceOutlinepng6" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 232, 40 )
+texture = ExtResource( 20 )
+
 [node name="HitDice" type="Control" parent="CanvasLayer"]
 margin_top = 16.0
 margin_right = 40.0
 margin_bottom = 56.0
 script = ExtResource( 15 )
 
-[node name="Dice0" type="Sprite" parent="CanvasLayer/HitDice"]
+[node name="Dice1" type="Sprite" parent="CanvasLayer/HitDice"]
 position = Vector2( 32, 24 )
 texture = ExtResource( 14 )
 
-[node name="Dice1" type="Sprite" parent="CanvasLayer/HitDice"]
+[node name="Dice2" type="Sprite" parent="CanvasLayer/HitDice"]
 position = Vector2( 72, 24 )
 texture = ExtResource( 13 )
 
-[node name="Dice2" type="Sprite" parent="CanvasLayer/HitDice"]
+[node name="Dice3" type="Sprite" parent="CanvasLayer/HitDice"]
 position = Vector2( 112, 24 )
 texture = ExtResource( 6 )
 
-[node name="Dice3" type="Sprite" parent="CanvasLayer/HitDice"]
+[node name="Dice4" type="Sprite" parent="CanvasLayer/HitDice"]
 position = Vector2( 152, 24 )
 texture = ExtResource( 5 )
 
-[node name="Dice4" type="Sprite" parent="CanvasLayer/HitDice"]
+[node name="Dice5" type="Sprite" parent="CanvasLayer/HitDice"]
 position = Vector2( 192, 24 )
 texture = ExtResource( 4 )
 
-[node name="Dice5" type="Sprite" parent="CanvasLayer/HitDice"]
+[node name="Dice6" type="Sprite" parent="CanvasLayer/HitDice"]
 position = Vector2( 232, 24 )
 texture = ExtResource( 7 )
 
