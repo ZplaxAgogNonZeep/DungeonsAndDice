@@ -20,6 +20,8 @@ func equip():
 		get_parent().get_parent().health += healthIncrease
 	else:
 		get_parent().get_parent().health = get_parent().get_parent().max_health
+	get_parent().get_parent().remove_item(2)
+	
 
 func unequip():
 	# is called when the item is put away

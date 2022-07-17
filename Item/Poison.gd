@@ -17,6 +17,7 @@ func equip():
 	# is called when the item is first picked up
 	# function MUST exist
 	get_parent().get_parent().take_damage(healthDecrease)
+	get_parent().get_parent().remove_item(2)
 
 
 func unequip():

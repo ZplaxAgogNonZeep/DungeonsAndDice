@@ -4,7 +4,7 @@ const TILE_SIZE = 16
 
 const LEVEL_ITEM_COUNTS = [2, 4, 6, 8, 10]
 
-const ItemScene = preload("res://Item/Hammer.tscn")
+#const ItemScene = preload("res://Item/Hammer.tscn")
 
 onready var game = get_tree().root.get_node("Game")
 
@@ -28,6 +28,22 @@ func place_items():
 		var y = room.position.y + 1 + randi() % int(room.size.y - 2)
 		#items.append(Item.new(self, x, y, randi() % 2 == 0))
 
+		var rng = RandomNumberGenerator.new()
+		rng.randomize()
+		
+		var type = rng.randi_range(0, 3)
+		
+		var ItemScene
+		match type:
+			0:
+				ItemScene = load("res://Item/Hammer.tscn")
+			1:
+				ItemScene = load("res://Item/Shield.tscn")
+			2:
+				ItemScene = load("res://Item/Heal.tscn")
+			3:
+				ItemScene = load("res://Item/Poison.tscn")
+		
 		var item = ItemScene.instance()
 		item.tile = Vector2(x, y)
 		item.position = item.tile * TILE_SIZE
