@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Item/ItemManager.gd" type="Script" id=2]
@@ -8,8 +8,8 @@
 [ext_resource path="res://art/Dice3.png" type="Texture" id=6]
 [ext_resource path="res://art/Dice6.png" type="Texture" id=7]
 [ext_resource path="res://art/black.png" type="Texture" id=8]
-[ext_resource path="res://Enemy/EnemyManager.gd" type="Script" id=9]
-[ext_resource path="res://Player/PlayerManager.gd" type="Script" id=10]
+[ext_resource path="res://Enemy/EnemyManager.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Player/PlayerManager.tscn" type="PackedScene" id=10]
 [ext_resource path="res://OptionsMenu.tscn" type="PackedScene" id=11]
 [ext_resource path="res://audio/AudioManager.tscn" type="PackedScene" id=12]
 [ext_resource path="res://art/Dice2.png" type="Texture" id=13]
@@ -18,9 +18,6 @@
 [ext_resource path="res://art/BlankHammer.png" type="Texture" id=16]
 [ext_resource path="res://art/BlankShield.png" type="Texture" id=17]
 [ext_resource path="res://art/fonts/04B_30_.TTF" type="DynamicFontData" id=18]
-[ext_resource path="res://art/TapeUi.png" type="Texture" id=19]
-[ext_resource path="res://art/DiceOutlinepng.png" type="Texture" id=20]
-[ext_resource path="res://DamageNumberManager.gd" type="Script" id=21]
 
 [sub_resource type="TileSet" id=2]
 0/name = "black.png 0"
@@ -40,20 +37,14 @@
 
 [sub_resource type="DynamicFont" id=3]
 size = 17
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 18 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 17
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 18 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 17
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 18 )
 
 [sub_resource type="DynamicFont" id=6]
@@ -71,14 +62,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="EnemyManager" type="Node2D" parent="."]
-script = ExtResource( 9 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="ItemManager" type="Node2D" parent="."]
-script = ExtResource( 2 )
+[node name="EnemyManager" parent="." instance=ExtResource( 9 )]
 
 [node name="VisibilityMap" type="TileMap" parent="."]
 visible = false
@@ -90,11 +74,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="PlayerManager" type="Node2D" parent="."]
-script = ExtResource( 10 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="PlayerManager" parent="." instance=ExtResource( 10 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -105,10 +85,6 @@ color = Color( 0.117647, 0.0117647, 0.0117647, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="UIBG" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 512, 64 )
-texture = ExtResource( 19 )
 
 [node name="LevelLabel" type="Label" parent="CanvasLayer"]
 margin_left = 888.0
@@ -156,12 +132,12 @@ margin_bottom = 199.0
 text = "Restart"
 
 [node name="WeaponLabel" type="Label" parent="CanvasLayer"]
-margin_left = 320.0
-margin_top = 16.0
-margin_right = 416.0
-margin_bottom = 33.0
+margin_left = 416.0
+margin_top = 8.0
+margin_right = 512.0
+margin_bottom = 25.0
 custom_fonts/font = SubResource( 4 )
-text = "Weapon:"
+text = "Weapon"
 align = 1
 
 [node name="WeaponLabel3" type="Label" parent="CanvasLayer"]
@@ -173,47 +149,23 @@ text = "HP"
 align = 1
 
 [node name="WeaponLabel2" type="Label" parent="CanvasLayer"]
-margin_left = 504.0
-margin_top = 16.0
-margin_right = 600.0
-margin_bottom = 33.0
+margin_left = 584.0
+margin_top = 8.0
+margin_right = 680.0
+margin_bottom = 25.0
 custom_fonts/font = SubResource( 5 )
-text = "Shield:"
+text = "Shield"
 align = 1
 
 [node name="WeaponSlot" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 464, 32 )
+position = Vector2( 464, 56 )
 texture = ExtResource( 16 )
 
 [node name="ShieldSlot" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 640, 32 )
+position = Vector2( 632, 56 )
 texture = ExtResource( 17 )
 
 [node name="OptionsMenu" parent="CanvasLayer" instance=ExtResource( 11 )]
-
-[node name="DiceOutlinepng" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 32, 40 )
-texture = ExtResource( 20 )
-
-[node name="DiceOutlinepng2" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 72, 40 )
-texture = ExtResource( 20 )
-
-[node name="DiceOutlinepng3" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 112, 40 )
-texture = ExtResource( 20 )
-
-[node name="DiceOutlinepng4" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 152, 40 )
-texture = ExtResource( 20 )
-
-[node name="DiceOutlinepng5" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 192, 40 )
-texture = ExtResource( 20 )
-
-[node name="DiceOutlinepng6" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 232, 40 )
-texture = ExtResource( 20 )
 
 [node name="HitDice" type="Control" parent="CanvasLayer"]
 margin_top = 16.0
@@ -221,27 +173,27 @@ margin_right = 40.0
 margin_bottom = 56.0
 script = ExtResource( 15 )
 
-[node name="Dice1" type="Sprite" parent="CanvasLayer/HitDice"]
+[node name="Dice0" type="Sprite" parent="CanvasLayer/HitDice"]
 position = Vector2( 32, 24 )
 texture = ExtResource( 14 )
 
-[node name="Dice2" type="Sprite" parent="CanvasLayer/HitDice"]
+[node name="Dice1" type="Sprite" parent="CanvasLayer/HitDice"]
 position = Vector2( 72, 24 )
 texture = ExtResource( 13 )
 
-[node name="Dice3" type="Sprite" parent="CanvasLayer/HitDice"]
+[node name="Dice2" type="Sprite" parent="CanvasLayer/HitDice"]
 position = Vector2( 112, 24 )
 texture = ExtResource( 6 )
 
-[node name="Dice4" type="Sprite" parent="CanvasLayer/HitDice"]
+[node name="Dice3" type="Sprite" parent="CanvasLayer/HitDice"]
 position = Vector2( 152, 24 )
 texture = ExtResource( 5 )
 
-[node name="Dice5" type="Sprite" parent="CanvasLayer/HitDice"]
+[node name="Dice4" type="Sprite" parent="CanvasLayer/HitDice"]
 position = Vector2( 192, 24 )
 texture = ExtResource( 4 )
 
-[node name="Dice6" type="Sprite" parent="CanvasLayer/HitDice"]
+[node name="Dice5" type="Sprite" parent="CanvasLayer/HitDice"]
 position = Vector2( 232, 24 )
 texture = ExtResource( 7 )
 
@@ -267,10 +219,10 @@ margin_right = 557.0
 margin_bottom = 343.0
 text = "Restart"
 
-[node name="AudioManager" parent="." instance=ExtResource( 12 )]
+[node name="ItemManager" type="Node2D" parent="."]
+script = ExtResource( 2 )
 
-[node name="DamageNumberManager" type="Node2D" parent="."]
-script = ExtResource( 21 )
+[node name="AudioManager" parent="." instance=ExtResource( 12 )]
 
 [connection signal="pressed" from="CanvasLayer/Win/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Lose/Button" to="." method="_on_Button_pressed"]

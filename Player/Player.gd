@@ -42,6 +42,7 @@ func _input(event):
 		try_move(0, 1)
 
 func try_move(dx, dy):
+	#print(game.map)
 	var x = game.player_tile.x + dx
 	var y = game.player_tile.y + dy
 	
@@ -60,9 +61,7 @@ func try_move(dx, dy):
 				var blocked = false #TODO: fix livis mess
 				for enemy in game.get_enemies():
 					if enemy.tile.x == x && enemy.tile.y == y:
-						var damage_value = rolldice(6)
-						game.get_node("DamageNumberManager").show_value(enemy.position, damage_value, true)
-						enemy.take_damage(self, damage_value)
+						enemy.take_damage(self, rolldice(6))
 						if has_item(0):
 							remove_item(0)
 
@@ -72,7 +71,7 @@ func try_move(dx, dy):
 					game.player_tile = Vector2(x, y)
 					for i in range(game.get_items(3).size()):
 						if game.get_items(3)[i].tile == game.player_tile and not has_item(game.get_items(3)[i].item_type):
-							print(has_item(game.get_items(3)[i].item_type))
+							
 							game.get_node("ItemManager").pick_up_item_at(self, i)
 							break
 				
@@ -100,10 +99,8 @@ func tween_to(posn : Vector2):
 func take_damage(dam : int):
 	# Reduces health value by given int, if the variable 
 	# is bigger than current health, calls die()
-	
 	if dam - defense < health:
 		health -= dam - defense
-		game.get_node("DamageNumberManager").show_value(position, dam - defense, false)
 		game.update_UI()
 	else:
 		health = 0
@@ -126,6 +123,7 @@ func _on_Tween_tween_completed(object, key):
 
 	for enemy in game.get_enemies():
 		enemy.act(self)
+	#print("Enemy tween")
 
 # Item Stuff =======================================================================================
 
@@ -148,11 +146,7 @@ func has_item(type : int) -> bool:
 	return false
 
 func remove_item(type : int):
-	print("REMOVING ITEM")
 	for i in range($Inventory.get_child_count()):
-		print("checking types:")
-		print($Inventory.get_child(i).item_type)
-		print(type)
 		if $Inventory.get_child(i).item_type == type:
 			$Inventory.get_child(i).unequip()
 			$Inventory.get_child(i).queue_free()

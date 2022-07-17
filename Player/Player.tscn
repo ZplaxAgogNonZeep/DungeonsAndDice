@@ -18,6 +18,11 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "WalkDown",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 15 ), ExtResource( 12 ), ExtResource( 5 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "WalkLeft",
@@ -32,17 +37,11 @@ animations = [ {
 "loop": true,
 "name": "WalkUp",
 "speed": 4.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "WalkDown",
-"speed": 5.0
 } ]
 
 [node name="Player" type="AnimatedSprite"]
 frames = SubResource( 1 )
 animation = "WalkDown"
-frame = 2
 playing = true
 centered = false
 script = ExtResource( 1 )

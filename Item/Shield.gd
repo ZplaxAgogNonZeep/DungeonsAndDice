@@ -11,7 +11,7 @@ var item_type := 1
 # 2 = instant
 # 3 = all
 
-export var defIncrease := 100
+export var defIncrease := 1
 
 func equip():
 	# is called when the item is first picked up

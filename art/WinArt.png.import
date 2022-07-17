@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/TapeUi.png-ecafc17d90a38727bba03ae5c0c04429.stex"
+path="res://.import/WinArt.png-9fe8c359699474673d08699bcb53293d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/TapeUi.png"
-dest_files=[ "res://.import/TapeUi.png-ecafc17d90a38727bba03ae5c0c04429.stex" ]
+source_file="res://art/WinArt.png"
+dest_files=[ "res://.import/WinArt.png-9fe8c359699474673d08699bcb53293d.stex" ]
 
 [params]
 
