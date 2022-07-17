@@ -14,10 +14,10 @@ func startTrack(trackName : String, trackType : int, isLooping : bool):
 	var folder : String
 	match trackType:
 		0:
-			track.volume_db = get_parent().voiceVolume
+			track.volume_db = get_parent().sfx_volume
 			folder = "SFX"
 		1:
-			track.volume_db = get_parent().musicVolume
+			track.volume_db = get_parent().music_volume
 			folder = "music"
 		_:
 			print("startTrack() given an Invalid trackType at " + str(trackType))

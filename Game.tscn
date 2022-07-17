@@ -1,7 +1,6 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
-[ext_resource path="res://audio/music/FrogSong.wav" type="AudioStream" id=2]
 [ext_resource path="res://art/floor.png" type="Texture" id=3]
 [ext_resource path="res://art/wall.png" type="Texture" id=4]
 [ext_resource path="res://art/Dark.png" type="Texture" id=5]
@@ -11,7 +10,6 @@
 [ext_resource path="res://Enemy/EnemyManager.gd" type="Script" id=9]
 [ext_resource path="res://Player/PlayerManager.gd" type="Script" id=10]
 [ext_resource path="res://audio/AudioManager.gd" type="Script" id=11]
-[ext_resource path="res://audio/Track.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -153,6 +151,7 @@ format = 1
 script = ExtResource( 9 )
 
 [node name="VisibilityMap" type="TileMap" parent="."]
+visible = false
 tile_set = SubResource( 2 )
 cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 16, 0, 0, 0, 0, 0 )
@@ -233,14 +232,8 @@ margin_right = 427.0
 margin_bottom = 199.0
 text = "Restart"
 
-[node name="MusicGame" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
-volume_db = -12.0
-
 [node name="AudioManager" type="Node" parent="."]
 script = ExtResource( 11 )
-
-[node name="Track" parent="AudioManager" instance=ExtResource( 12 )]
 
 [connection signal="pressed" from="CanvasLayer/Win/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Lose/Button" to="." method="_on_Button_pressed"]

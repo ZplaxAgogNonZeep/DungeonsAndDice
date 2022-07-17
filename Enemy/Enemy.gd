@@ -37,8 +37,7 @@ func die():
 	queue_free()
 	
 func take_damage(game, dmg):
-	$SoundPlayerAttack.play()
-	
+	self.game.get_node("AudioManager").startTrack("AttackSFX", 0, false)
 		# TODO: Tweak values
 	health = max(0, health - dmg)
 	$HPBar.value = health
