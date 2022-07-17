@@ -3,7 +3,4 @@
 [ext_resource path="res://audio/Track.gd" type="Script" id=1]
 
 [node name="Track" type="AudioStreamPlayer"]
-volume_db = -12.0
 script = ExtResource( 1 )
-
-[connection signal="finished" from="." to="." method="_on_Track_finished"]

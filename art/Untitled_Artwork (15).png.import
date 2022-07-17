@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/WinGoodArt.png-a03c6f4d7ab629b7b8a13d1e89e482cb.stex"
+path="res://.import/Untitled_Artwork (15).png-2a21278643430c698b9d95e46c4f367a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/WinGoodArt.png"
-dest_files=[ "res://.import/WinGoodArt.png-a03c6f4d7ab629b7b8a13d1e89e482cb.stex" ]
+source_file="res://art/Untitled_Artwork (15).png"
+dest_files=[ "res://.import/Untitled_Artwork (15).png-2a21278643430c698b9d95e46c4f367a.stex" ]
 
 [params]
 
