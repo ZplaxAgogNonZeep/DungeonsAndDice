@@ -63,7 +63,8 @@ func get_items(type : int) -> Array:
 func update_UI():
 	$CanvasLayer/HPLabel.text = str(get_player().health)
 	$CanvasLayer/ScoreLabel.text = "Score: " + str(score)
-
+	
+	$CanvasLayer/HitDice.changeDice(get_player().health)
 	
 	if get_player().has_item(0):
 		print("PLAYER HAS THE ITEM")
