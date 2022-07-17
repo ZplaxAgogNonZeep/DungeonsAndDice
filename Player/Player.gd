@@ -106,6 +106,7 @@ func take_damage(dam : int):
 		health -= dam - defense
 		game.get_node("DamageNumberManager").show_value(position, dam - defense, false)
 		game.update_UI()
+		self.game.get_node("AudioManager").startTrack("dicesound", 0, false)
 	else:
 		health = 0
 		game.update_UI()
@@ -117,8 +118,9 @@ func take_damage(dam : int):
 
 func die():
 	#deletes the node and notifies the system
-	game._on_Button_pressed() # This is very dangrous
-	game.get_node("CanvasLayer/Lose").visible = true
+#	game._on_Button_pressed() # This is very dangrous
+#	game.get_node("CanvasLayer/Lose").visible = true
+	get_tree().change_scene("res://TitleMenu.tscn")
 	queue_free()
 
 

@@ -114,6 +114,8 @@ func go_to_next_level():
 #		score += 1000
 #		$CanvasLayer/Win.visible = true
 		if goodEnding:
+			$AudioManager.clearAudio(1)
+			$AudioManager.startTrack("FrogSong", 1, true)
 			$WinGame.visible = true
 			$CanvasLayer/ColorRect2.visible = true
 			get_tree().paused = true

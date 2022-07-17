@@ -41,6 +41,7 @@ func take_damage(game, dmg):
 	health = max(0, health - dmg)
 	$HPBar.value = health
 	
+	self.game.get_node("AudioManager").startTrack("AttackSFX", 0, false)
 	
 	if health == 0:
 		#game.score += 10 * full_hp

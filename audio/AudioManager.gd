@@ -44,8 +44,8 @@ func clearAudio(trackType : int, clearAll:=false):
 			get_child(0).queue_free()
 	else:
 		for i in range(get_child_count()):
-			if get_child(0).trackType == trackType:
-				get_child(0).queue_free()
+			if get_child(i).trackType == trackType:
+				get_child(i).queue_free()
 
 func changeVolume(trackType : int, value : float):
 	# Changes all tracks of a specific type to a given volume

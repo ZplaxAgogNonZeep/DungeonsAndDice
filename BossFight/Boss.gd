@@ -4,6 +4,8 @@ var tile = Vector2(7, 2)
 
 onready var game = get_tree().root.get_node("Game")
 
+var firstDmg = true
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -40,6 +42,28 @@ func act(player):
 func take_damage(game, dmg):
 	health = max(0, health - dmg)
 	$HPBar.value = health
+	
+	if (firstDmg):
+		self.game.get_node("AudioManager").clearAudio(0, false)
+		firstDmg = false
+	
+	var randnum = randi() % 6
+	
+	match randnum:
+		1:
+			self.game.get_node("AudioManager").startTrack("hurt1", 0, false)
+		2:
+			self.game.get_node("AudioManager").startTrack("hurt2", 0, false)
+		3:
+			self.game.get_node("AudioManager").startTrack("hurt3", 0, false)
+		4:
+			self.game.get_node("AudioManager").startTrack("hurt4", 0, false)
+		5:
+			self.game.get_node("AudioManager").startTrack("hurt5", 0, false)
+		6:
+			self.game.get_node("AudioManager").startTrack("hurt6", 0, false)
+	
+
 	
 	
 	if health == 0:

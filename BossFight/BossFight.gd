@@ -5,8 +5,8 @@ const LEVEL_SIZES = [
 	Vector2(16, 32)
 ]
 
-var sfx_volume = .12
-var music_volume = .12
+var sfx_volume = 0
+var music_volume = -12
 
 var map = []
 
@@ -19,6 +19,8 @@ var level_size
 var score := 0
 var player_tile
 
+var goodEnding = false;
+
 func get_player():
 	return $PlayerManager.get_player_if_there()
 
@@ -30,7 +32,8 @@ func get_items(ha):
 
 func _ready():
 	#OS.set_window_size(Vector2(1280, 720))
-	$AudioManager.startTrack("FrogSong", 1, true)
+	$AudioManager.startTrack("exe", 1, true)
+	$AudioManager.startTrack("agro", 0, false)
 	build_level()
 
 func build_level():

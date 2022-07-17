@@ -1,17 +1,25 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://art/hole.png" type="Texture" id=1]
 [ext_resource path="res://art/Shield.png" type="Texture" id=2]
-[ext_resource path="res://art/enemy.png" type="Texture" id=3]
+[ext_resource path="res://art/Ld6(1).png" type="Texture" id=3]
 [ext_resource path="res://art/fonts/04B_30_.TTF" type="DynamicFontData" id=4]
 [ext_resource path="res://TitleMenu.gd" type="Script" id=5]
 [ext_resource path="res://audio/Music/GhostieDance.wav" type="AudioStream" id=6]
+[ext_resource path="res://art/Ld4(1).png" type="Texture" id=7]
+[ext_resource path="res://art/Ld2(1).png" type="Texture" id=8]
+[ext_resource path="res://art/amper.png" type="Texture" id=9]
+[ext_resource path="res://art/DiceHammer.png" type="Texture" id=10]
+[ext_resource path="res://art/DeathScreen.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.0901961, 0.0745098, 0.0745098, 0.733333 )
 
 [sub_resource type="DynamicFont" id=2]
 outline_size = 2
@@ -24,9 +32,14 @@ anchor_bottom = 1.0
 script = ExtResource( 5 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 margin_right = 1024.0
 margin_bottom = 600.0
 color = Color( 0, 0.490196, 0.376471, 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 512, 296 )
+texture = ExtResource( 11 )
 
 [node name="Label" type="Label" parent="."]
 modulate = Color( 0.572549, 0.301961, 0.301961, 1 )
@@ -41,8 +54,9 @@ valign = 1
 [node name="Panel" type="Panel" parent="."]
 margin_left = 16.0
 margin_top = 280.0
-margin_right = 472.0
-margin_bottom = 559.0
+margin_right = 496.0
+margin_bottom = 552.0
+custom_styles/panel = SubResource( 3 )
 
 [node name="AvoidLab" type="Label" parent="Panel"]
 modulate = Color( 0.572549, 0.301961, 0.301961, 1 )
@@ -71,6 +85,23 @@ margin_left = 144.0
 margin_top = 2.0
 margin_right = 184.0
 margin_bottom = 42.0
+rect_pivot_offset = Vector2( -360, -34 )
+texture = ExtResource( 8 )
+expand = true
+
+[node name="EnemyPic2" type="TextureRect" parent="Panel"]
+margin_left = 192.0
+margin_right = 232.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( -360, -34 )
+texture = ExtResource( 7 )
+expand = true
+
+[node name="EnemyPic3" type="TextureRect" parent="Panel"]
+margin_left = 248.0
+margin_right = 288.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( -360, -34 )
 texture = ExtResource( 3 )
 expand = true
 
@@ -101,16 +132,41 @@ margin_bottom = 138.0
 texture = ExtResource( 2 )
 expand = true
 
+[node name="ShieldPic2" type="TextureRect" parent="Panel"]
+margin_left = 248.0
+margin_top = 96.0
+margin_right = 288.0
+margin_bottom = 136.0
+texture = ExtResource( 10 )
+expand = true
+
 [node name="ControlLab" type="Label" parent="Panel"]
 modulate = Color( 0.572549, 0.301961, 0.301961, 1 )
-margin_left = 3.0
-margin_top = 145.0
-margin_right = 345.0
-margin_bottom = 195.0
+margin_left = 8.0
+margin_top = 152.0
+margin_right = 473.0
+margin_bottom = 202.0
 custom_fonts/font = SubResource( 1 )
-text = "Move with WASD"
+text = "Move with Arrow Keys"
 align = 1
 valign = 1
+
+[node name="ControlLab2" type="Label" parent="Panel"]
+modulate = Color( 0.572549, 0.301961, 0.301961, 1 )
+margin_left = 8.0
+margin_top = 192.0
+margin_right = 465.0
+margin_bottom = 242.0
+custom_fonts/font = SubResource( 1 )
+text = "Options with shift"
+align = 1
+valign = 1
+
+[node name="Amper" type="Sprite" parent="Panel"]
+modulate = Color( 0.572549, 0.301961, 0.301961, 1 )
+position = Vector2( 656, -200 )
+scale = Vector2( 0.530001, 0.65 )
+texture = ExtResource( 9 )
 
 [node name="PlayButton" type="Button" parent="."]
 margin_left = 704.0
