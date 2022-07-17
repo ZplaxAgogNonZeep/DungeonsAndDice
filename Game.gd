@@ -108,6 +108,7 @@ func build_level():
 	map.clear()
 	tile_map.clear()
 	$EnemyManager.removeEnemies() 
+	$ItemManager.removeItems()
 	
 	enemy_pathfinding = AStar.new() #NOTE: livi mess
 	

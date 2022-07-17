@@ -8,13 +8,17 @@ const LEVEL_ITEM_COUNTS = [2, 4, 6, 8, 10]
 
 onready var game = get_tree().root.get_node("Game")
 
-var ItemArray := []
+#var ItemArray := []
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
-var items = []
+#var items = []
+
+func removeItems():
+	for i in range(get_child_count()):
+		get_child(i).queue_free()
 
 func pick_up_item_at(player, index : int):
 	player.add_item(get_child(index).path)
@@ -44,10 +48,18 @@ func place_items():
 			3:
 				ItemScene = load("res://Item/Poison.tscn")
 		
-		var item = ItemScene.instance()
-		item.tile = Vector2(x, y)
-		item.position = item.tile * TILE_SIZE
-		add_child(item)
+		var blocked = false
+		for item in get_children():
+			
+			if item.tile.x == x && item.tile.y == y:
+				blocked = true
+				break
+				
+		if !blocked:
+			var item = ItemScene.instance()
+			item.tile = Vector2(x, y)
+			item.position = item.tile * TILE_SIZE
+			add_child(item)
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():
