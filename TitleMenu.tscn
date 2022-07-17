@@ -1,13 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://art/hole.png" type="Texture" id=1]
 [ext_resource path="res://art/Shield.png" type="Texture" id=2]
 [ext_resource path="res://art/enemy.png" type="Texture" id=3]
 [ext_resource path="res://art/fonts/04B_30_.TTF" type="DynamicFontData" id=4]
 [ext_resource path="res://TitleMenu.gd" type="Script" id=5]
-[ext_resource path="res://audio/Xelafina - XLLNN - FROG SONG.mp3" type="AudioStream" id=6]
-[ext_resource path="res://audio/GhostieDance.wav" type="AudioStream" id=6]
-
+[ext_resource path="res://audio/Music/GhostieDance.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
