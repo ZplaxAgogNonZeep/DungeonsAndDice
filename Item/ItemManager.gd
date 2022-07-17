@@ -27,7 +27,7 @@ func pick_up_item_at(player, index : int):
 func place_items():
 	var num_items = LEVEL_ITEM_COUNTS[game.level_num]
 	for i in range(num_items):
-		var room = game.rooms[randi() % (game.rooms.size())]
+		var room = game.rooms[1 + randi() % (game.rooms.size() - 1)]
 		var x = room.position.x + 1 + randi() % int(room.size.x - 2)
 		var y = room.position.y + 1 + randi() % int(room.size.y - 2)
 		#items.append(Item.new(self, x, y, randi() % 2 == 0))
