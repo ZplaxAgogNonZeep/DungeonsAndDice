@@ -130,8 +130,8 @@ func tile_to_pixel_center(x, y):
 	return Vector2((x + 0.5) * TILE_SIZE, (y + 0.5) * TILE_SIZE)
 
 func spawn_fireball():
-	var x = 3
-	var y = 3
+	var x = (randi() % 12) + 2
+	var y = 2
 	
 	var enemy = preload("res://Enemy/Fireball.tscn").instance()
 	enemy.tile = Vector2(x, y)
