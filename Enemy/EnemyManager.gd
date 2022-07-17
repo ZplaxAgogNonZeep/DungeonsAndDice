@@ -220,8 +220,6 @@ func placeD20s():
 			enemy.position = enemy.tile * TILE_SIZE
 			add_child(enemy)
 	
-
-
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
