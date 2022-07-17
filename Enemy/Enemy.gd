@@ -1,4 +1,4 @@
-extends Sprite
+extends AnimatedSprite
 
 # A testing Enemy Script, not sure how we want to do enemy implementation so I'm just kind of testing
 

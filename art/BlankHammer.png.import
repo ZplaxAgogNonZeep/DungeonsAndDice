@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Dark.png-fee2c9edacb5675a66a189db33278811.stex"
+path="res://.import/BlankHammer.png-651f751fc35da27ee4fe00a7e8eca6aa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Dark.png"
-dest_files=[ "res://.import/Dark.png-fee2c9edacb5675a66a189db33278811.stex" ]
+source_file="res://art/BlankHammer.png"
+dest_files=[ "res://.import/BlankHammer.png-651f751fc35da27ee4fe00a7e8eca6aa.stex" ]
 
 [params]
 

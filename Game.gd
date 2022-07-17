@@ -67,14 +67,14 @@ func update_UI():
 	
 	if get_player().has_item(0):
 		print("PLAYER HAS THE ITEM")
-		$CanvasLayer/WeaponSlot.texture = load("res://art/hammer.png")
+		$CanvasLayer/WeaponSlot.texture = load("res://art/DiceHammer.png")
 	else:
-		$CanvasLayer/WeaponSlot.texture = load("res://art/black.png")
+		$CanvasLayer/WeaponSlot.texture = load("res://art/BlankHammer.png")
 	
 	if get_player().has_item(1):
 		$CanvasLayer/ShieldSlot.texture = load("res://art/Shield.png")
 	else:
-		$CanvasLayer/ShieldSlot.texture = load("res://art/black.png")
+		$CanvasLayer/ShieldSlot.texture = load("res://art/BlankShield.png")
 	
 
 # Game State ---------------------------------------------
@@ -86,7 +86,7 @@ var enemy_pathfinding
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#Scaling for pixel art, not perfect
-	OS.set_window_size(Vector2(1280, 720))
+	OS.set_window_size(Vector2(1024, 600)) #Vector2(1280, 720))
 	
 	# Audio Sounds :) ==============================================================================
 	$AudioManager.startTrack("FrogSong", 1, true)
