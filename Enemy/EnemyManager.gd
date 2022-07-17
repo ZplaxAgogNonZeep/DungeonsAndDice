@@ -60,6 +60,12 @@ func removeEnemies():
 	
 func placeEnemies():
 	placeD2s()
+	placeD4s()
+	placeD6s()
+	placeD8s()
+	placeD10s()
+	placeD12s()
+	placeD20s()
 
 #func enemy_move():
 #	for enemy in enemies:
@@ -84,6 +90,132 @@ func placeD2s():
 				
 		if !blocked:
 			var enemy = preload("res://Enemy/D2Enemy.tscn").instance()
+			enemy.tile = Vector2(x, y)
+			enemy.position = enemy.tile * TILE_SIZE
+			add_child(enemy)
+	
+func placeD4s():
+	var num_d4_enemies = LEVEL_D4_ENEMY_COUNTS[game.level_num]
+	for i in range(num_d4_enemies):
+		var room = game.rooms[1 + randi() % (game.rooms.size() - 1)]
+		var x = room.position.x + 1 + randi() % int(room.size.x - 2)
+		var y = room.position.y + 1 + randi() % int(room.size.y - 2)
+		
+		
+		var blocked = false
+		for enemy in get_children():
+
+			if enemy.tile.x == x && enemy.tile.y == y:
+				blocked = true
+				break
+				
+		if !blocked:
+			var enemy = preload("res://Enemy/D4Enemy.tscn").instance()
+			enemy.tile = Vector2(x, y)
+			enemy.position = enemy.tile * TILE_SIZE
+			add_child(enemy)
+			
+func placeD6s():
+	var num_d6_enemies = LEVEL_D6_ENEMY_COUNTS[game.level_num]
+	for i in range(num_d6_enemies):
+		var room = game.rooms[1 + randi() % (game.rooms.size() - 1)]
+		var x = room.position.x + 1 + randi() % int(room.size.x - 2)
+		var y = room.position.y + 1 + randi() % int(room.size.y - 2)
+		
+		
+		var blocked = false
+		for enemy in get_children():
+
+			if enemy.tile.x == x && enemy.tile.y == y:
+				blocked = true
+				break
+				
+		if !blocked:
+			var enemy = preload("res://Enemy/D6Enemy.tscn").instance()
+			enemy.tile = Vector2(x, y)
+			enemy.position = enemy.tile * TILE_SIZE
+			add_child(enemy)
+	
+func placeD8s():
+	var num_d8_enemies = LEVEL_D8_ENEMY_COUNTS[game.level_num]
+	for i in range(num_d8_enemies):
+		var room = game.rooms[1 + randi() % (game.rooms.size() - 1)]
+		var x = room.position.x + 1 + randi() % int(room.size.x - 2)
+		var y = room.position.y + 1 + randi() % int(room.size.y - 2)
+		
+		
+		var blocked = false
+		for enemy in get_children():
+
+			if enemy.tile.x == x && enemy.tile.y == y:
+				blocked = true
+				break
+				
+		if !blocked:
+			var enemy = preload("res://Enemy/D8Enemy.tscn").instance()
+			enemy.tile = Vector2(x, y)
+			enemy.position = enemy.tile * TILE_SIZE
+			add_child(enemy)
+	
+func placeD10s():
+	var num_d10_enemies = LEVEL_D10_ENEMY_COUNTS[game.level_num]
+	for i in range(num_d10_enemies):
+		var room = game.rooms[1 + randi() % (game.rooms.size() - 1)]
+		var x = room.position.x + 1 + randi() % int(room.size.x - 2)
+		var y = room.position.y + 1 + randi() % int(room.size.y - 2)
+		
+		
+		var blocked = false
+		for enemy in get_children():
+
+			if enemy.tile.x == x && enemy.tile.y == y:
+				blocked = true
+				break
+				
+		if !blocked:
+			var enemy = preload("res://Enemy/D10Enemy.tscn").instance()
+			enemy.tile = Vector2(x, y)
+			enemy.position = enemy.tile * TILE_SIZE
+			add_child(enemy)
+	
+func placeD12s():
+	var num_d12_enemies = LEVEL_D12_ENEMY_COUNTS[game.level_num]
+	for i in range(num_d12_enemies):
+		var room = game.rooms[1 + randi() % (game.rooms.size() - 1)]
+		var x = room.position.x + 1 + randi() % int(room.size.x - 2)
+		var y = room.position.y + 1 + randi() % int(room.size.y - 2)
+		
+		
+		var blocked = false
+		for enemy in get_children():
+
+			if enemy.tile.x == x && enemy.tile.y == y:
+				blocked = true
+				break
+				
+		if !blocked:
+			var enemy = preload("res://Enemy/D12Enemy.tscn").instance()
+			enemy.tile = Vector2(x, y)
+			enemy.position = enemy.tile * TILE_SIZE
+			add_child(enemy)
+	
+func placeD20s():
+	var num_d20_enemies = LEVEL_D20_ENEMY_COUNTS[game.level_num]
+	for i in range(num_d20_enemies):
+		var room = game.rooms[1 + randi() % (game.rooms.size() - 1)]
+		var x = room.position.x + 1 + randi() % int(room.size.x - 2)
+		var y = room.position.y + 1 + randi() % int(room.size.y - 2)
+		
+		
+		var blocked = false
+		for enemy in get_children():
+
+			if enemy.tile.x == x && enemy.tile.y == y:
+				blocked = true
+				break
+				
+		if !blocked:
+			var enemy = preload("res://Enemy/D20Enemy.tscn").instance()
 			enemy.tile = Vector2(x, y)
 			enemy.position = enemy.tile * TILE_SIZE
 			add_child(enemy)
