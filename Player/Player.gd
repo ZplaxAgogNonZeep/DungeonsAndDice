@@ -42,12 +42,14 @@ func _input(event):
 		try_move(0, 1)
 
 func try_move(dx, dy):
+	#print(game.map)
 	var x = game.player_tile.x + dx
 	var y = game.player_tile.y + dy
 	
 	var tile_type = game.Tile.Stone
 	if x >= 0 && x < game.level_size.x && y >= 0 && y < game.level_size.y:
 		tile_type = game.map[x][y]
+		print(tile_type)
 	
 	$AttackRange.cast_to = Vector2(dx * game.TILE_SIZE, dy * game.TILE_SIZE)
 	$AttackRange.force_raycast_update()
@@ -122,6 +124,7 @@ func _on_Tween_tween_completed(object, key):
 
 	for enemy in game.get_enemies():
 		enemy.act(self)
+	#print("Enemy tween")
 
 # Item Stuff =======================================================================================
 

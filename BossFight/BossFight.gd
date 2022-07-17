@@ -19,6 +19,12 @@ var player_tile
 func get_player():
 	return $PlayerManager.get_player_if_there()
 
+func get_enemies():
+	return $EnemyManager.get_children()
+	
+func get_items(ha):
+	return []
+
 func _ready():
 	#OS.set_window_size(Vector2(1280, 720))
 	
@@ -41,25 +47,34 @@ func build_level():
 	
 	#Place player
 	$PlayerManager.spawn_player()
-	var player_x = 20
-	var player_y = 20
+	var player_x = 5
+	var player_y = 5
 	player_tile = Vector2(player_x, player_y)
 	
 	spawn_fireball()
 	
 func add_floor():
+	
 	#Bottom left
 	tile_map.set_cell(2,30,Tile.Floor)
+	map[2][30] = Tile.Floor
 	#Up left
 	tile_map.set_cell(2,2,Tile.Floor)
+	map[2][2] = Tile.Floor
 	#Bottom right
 	tile_map.set_cell(13,30,Tile.Floor)
+	map[13][30] = Tile.Floor
 	#Up right
 	tile_map.set_cell(13,2,Tile.Floor)
+	map[13][2] = Tile.Floor
 	
-	for y in range (11):
-		for x in range (28):
+	for y in range (28):
+		for x in range (11):
+			map[x][y] = Tile.Floor
 			tile_map.set_cell(x+2, y+2, Tile.Floor)
+	
+	
+	
 	
 	
 func add_walls():
@@ -122,3 +137,4 @@ func spawn_fireball():
 	enemy.tile = Vector2(x, y)
 	enemy.position = enemy.tile * TILE_SIZE
 	add_child(enemy)
+
