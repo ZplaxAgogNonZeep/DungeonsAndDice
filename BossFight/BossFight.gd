@@ -47,8 +47,8 @@ func build_level():
 	
 	#Place player
 	$PlayerManager.spawn_player()
-	var player_x = 5
-	var player_y = 5
+	var player_x = 8
+	var player_y = 30
 	player_tile = Vector2(player_x, player_y)
 	
 	spawn_fireball()
@@ -136,5 +136,5 @@ func spawn_fireball():
 	var enemy = preload("res://Enemy/Fireball.tscn").instance()
 	enemy.tile = Vector2(x, y)
 	enemy.position = enemy.tile * TILE_SIZE
-	add_child(enemy)
+	$EnemyManager.add_child(enemy)
 

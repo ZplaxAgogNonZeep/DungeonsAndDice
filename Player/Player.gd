@@ -49,7 +49,6 @@ func try_move(dx, dy):
 	var tile_type = game.Tile.Stone
 	if x >= 0 && x < game.level_size.x && y >= 0 && y < game.level_size.y:
 		tile_type = game.map[x][y]
-		print(tile_type)
 	
 	$AttackRange.cast_to = Vector2(dx * game.TILE_SIZE, dy * game.TILE_SIZE)
 	$AttackRange.force_raycast_update()
