@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Item/ItemManager.gd" type="Script" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://art/TapeUi.png" type="Texture" id=19]
 [ext_resource path="res://art/DiceOutlinepng.png" type="Texture" id=20]
 [ext_resource path="res://DamageNumberManager.gd" type="Script" id=21]
+[ext_resource path="res://art/GoodWinArt.png" type="Texture" id=22]
 
 [sub_resource type="TileSet" id=2]
 0/name = "black.png 0"
@@ -57,6 +58,10 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 18 )
 
 [sub_resource type="DynamicFont" id=6]
+size = 17
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=7]
 size = 17
 font_data = ExtResource( 18 )
 
@@ -267,10 +272,46 @@ margin_right = 557.0
 margin_bottom = 343.0
 text = "Restart"
 
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+visible = false
+margin_right = 1024.0
+margin_bottom = 80.0
+color = Color( 0, 0, 0, 1 )
+
 [node name="AudioManager" parent="." instance=ExtResource( 12 )]
 
 [node name="DamageNumberManager" type="Node2D" parent="."]
 script = ExtResource( 21 )
+
+[node name="WinGame" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Sprite" type="Sprite" parent="WinGame"]
+position = Vector2( 512, 296 )
+texture = ExtResource( 22 )
+
+[node name="Label" type="Label" parent="WinGame"]
+margin_left = 464.0
+margin_top = 8.0
+margin_right = 1026.0
+margin_bottom = 592.0
+custom_fonts/font = SubResource( 7 )
+text = "Credits
+
+Created by team BLZ
+
+-Programming: ZplaxZeep and LiviRoseGames
+-Art Assets: Birdie711
+
+
+-Voice of d100: ElementalDAR
+-Music developed by: Xelafina
+
+"
+align = 1
+valign = 1
 
 [connection signal="pressed" from="CanvasLayer/Win/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Lose/Button" to="." method="_on_Button_pressed"]

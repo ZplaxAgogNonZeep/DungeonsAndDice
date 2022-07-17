@@ -63,6 +63,7 @@ func try_move(dx, dy):
 						var damage_value = rolldice(6)
 						game.get_node("DamageNumberManager").show_value(enemy.position, damage_value, true)
 						enemy.take_damage(self, damage_value)
+						game.goodEnding = false
 						if has_item(0):
 							remove_item(0)
 

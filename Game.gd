@@ -29,6 +29,8 @@ var map = []
 var rooms = []
 var level_size
 
+var goodEnding = true
+
 # Audio Variables ==================================================================================
 var music_volume = -12
 var sfx_volume = -12
@@ -111,7 +113,12 @@ func go_to_next_level():
 	else:
 #		score += 1000
 #		$CanvasLayer/Win.visible = true
-		get_tree().change_scene("res://BossFight.tscn")
+		if goodEnding:
+			$WinGame.visible = true
+			$CanvasLayer/ColorRect2.visible = true
+			get_tree().paused = true
+		else:
+			get_tree().change_scene("res://BossFight.tscn")
 
 func build_level():
 	
