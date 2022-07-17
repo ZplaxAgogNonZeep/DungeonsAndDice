@@ -35,6 +35,10 @@ onready var tile_map = $TileMap
 onready var visiblility_map = $VisibilityMap
 #onready var player = $Player
 
+# Audio Variables ==================================================================================
+var sfx_volume = -12
+var music_volume = -12
+
 # Getters and Setters ----------------------------------------------------------
 
 func get_player():
@@ -81,6 +85,7 @@ var enemy_pathfinding
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$AudioManager.startTrack("FrogSong", 1, true)
 	#Scaling for pixel art, not perfect
 	OS.set_window_size(Vector2(1280, 720))
 	
