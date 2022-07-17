@@ -68,9 +68,9 @@ func add_floor():
 	tile_map.set_cell(13,2,Tile.Floor)
 	map[13][2] = Tile.Floor
 	
-	for y in range (28):
-		for x in range (11):
-			map[x][y] = Tile.Floor
+	for y in range (29):
+		for x in range (12):
+			map[x+2][y+2] = Tile.Floor
 			tile_map.set_cell(x+2, y+2, Tile.Floor)
 	
 	
@@ -89,11 +89,11 @@ func add_walls():
 	
 	for y in range(30):
 		tile_map.set_cell(1, y+2, Tile.Wall)
-		tile_map.set_cell(31, y+1, Tile.Wall)
+		tile_map.set_cell(14, y+2, Tile.Wall)
 
 	for x in range(13):
 		tile_map.set_cell(x+2, 1, Tile.Wall)
-		tile_map.set_cell(x+2, 14, Tile.Wall)
+		tile_map.set_cell(x+2, 31, Tile.Wall)
 
 func set_tile(x, y, type):
 	map[x][y] = type
