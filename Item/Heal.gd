@@ -17,7 +17,7 @@ func equip():
 	healthIncrease = rolldice(6)
 	# is called when the item is first picked up
 	# function MUST exist
-	if get_parent().get_parent().health < get_parent().get_parent().max_health and get_parent().get_parent().health + healthIncrease < get_parent().get_parent().max_health:
+	if get_parent().get_parent().health < get_parent().get_parent().max_health:
 		get_parent().get_parent().health += healthIncrease
 	else:
 		get_parent().get_parent().health = get_parent().get_parent().max_health

@@ -23,11 +23,6 @@ animations = [ {
 "name": "WalkLeft",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "WalkRight",
-"speed": 4.0
-}, {
 "frames": [ ExtResource( 7 ), ExtResource( 14 ), ExtResource( 6 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "WalkUp",
@@ -37,6 +32,11 @@ animations = [ {
 "loop": true,
 "name": "WalkDown",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "WalkRight",
+"speed": 4.0
 } ]
 
 [node name="Player" type="AnimatedSprite"]
