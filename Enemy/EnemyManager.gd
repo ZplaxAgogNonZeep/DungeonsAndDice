@@ -3,8 +3,17 @@ extends Node2D
 const LEVEL_ENEMY_COUNTS = [5, 8, 12, 18, 26]
 const TILE_SIZE = 64
 
+#consts for diff enemy types
+const LEVEL_D2_ENEMY_COUNTS = [2, 3, 4, 5, 6]
+const LEVEL_D4_ENEMY_COUNTS = [2, 2, 3, 4, 6]
+const LEVEL_D6_ENEMY_COUNTS = [1, 2, 2, 3, 4]
+const LEVEL_D8_ENEMY_COUNTS = [0, 1, 2, 3, 4]
+const LEVEL_D10_ENEMY_COUNTS = [0, 0, 1, 2, 3]
+const LEVEL_D12_ENEMY_COUNTS = [0, 0, 0, 1, 6]
+const LEVEL_D20_ENEMY_COUNTS = [0, 0, 0, 2, 1]
+
 onready var game = get_tree().root.get_node("Game")
-const EnemyScene = preload("res://Enemy/Enemy.tscn")
+const EnemyScene = preload("res://Enemy/D2Enemy.tscn")
 
 var enemies = []
 
@@ -50,8 +59,17 @@ func removeEnemies():
 		get_child(i).queue_free()
 	
 func placeEnemies():
-	var num_enemies = LEVEL_ENEMY_COUNTS[game.level_num]
-	for i in range(num_enemies):
+	placeD2s()
+
+#func enemy_move():
+#	for enemy in enemies:
+#		enemy.position = enemy.tile * TILE_SIZE
+		
+		
+	
+func placeD2s():
+	var num_d2_enemies = LEVEL_D2_ENEMY_COUNTS[game.level_num]
+	for i in range(num_d2_enemies):
 		var room = game.rooms[1 + randi() % (game.rooms.size() - 1)]
 		var x = room.position.x + 1 + randi() % int(room.size.x - 2)
 		var y = room.position.y + 1 + randi() % int(room.size.y - 2)
@@ -65,16 +83,11 @@ func placeEnemies():
 				break
 				
 		if !blocked:
-			var enemy = preload("res://Enemy/Enemy.tscn").instance()
+			var enemy = preload("res://Enemy/D2Enemy.tscn").instance()
 			enemy.tile = Vector2(x, y)
 			enemy.position = enemy.tile * TILE_SIZE
 			add_child(enemy)
-
-#func enemy_move():
-#	for enemy in enemies:
-#		enemy.position = enemy.tile * TILE_SIZE
-		
-		
+	
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
