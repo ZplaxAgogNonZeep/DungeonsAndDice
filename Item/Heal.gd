@@ -14,6 +14,7 @@ var item_type := 2
 export var healthIncrease := 1
 
 func equip():
+	healthIncrease = rolldice(6)
 	# is called when the item is first picked up
 	# function MUST exist
 	if get_parent().get_parent().health < get_parent().get_parent().max_health:
@@ -27,3 +28,8 @@ func unequip():
 	# is called when the item is put away
 	# function MUST exist
 	pass
+
+func rolldice(sides):
+	var roll = randi() % sides + 1
+	print("Potion rolled ", roll)
+	return roll

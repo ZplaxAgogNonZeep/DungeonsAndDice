@@ -13,7 +13,7 @@ enum Tile {Floor, Wall, Stone, Door, Hole}
 var health = 3
 var max_health = 3
 
-var damage = 1
+var damage #= 1
 var defense = 0
 
 var hasPlayerMoved = false
@@ -60,7 +60,7 @@ func try_move(dx, dy):
 				var blocked = false #TODO: fix livis mess
 				for enemy in game.get_enemies():
 					if enemy.tile.x == x && enemy.tile.y == y:
-						enemy.take_damage(self, damage)
+						enemy.take_damage(self, rolldice(6))
 						if has_item(0):
 							remove_item(0)
 
@@ -151,3 +151,7 @@ func remove_item(type : int):
 	yield(get_tree(), "idle_frame")
 	game.update_UI()
 	
+func rolldice(sides):
+	var roll = randi() % sides + 1
+	print("Player rolled ", roll)
+	return roll
