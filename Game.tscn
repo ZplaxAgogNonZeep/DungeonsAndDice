@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Item/ItemManager.gd" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://art/fonts/04B_30_.TTF" type="DynamicFontData" id=18]
 [ext_resource path="res://art/TapeUi.png" type="Texture" id=19]
 [ext_resource path="res://art/DiceOutlinepng.png" type="Texture" id=20]
+[ext_resource path="res://DamageNumberManager.gd" type="Script" id=21]
 
 [sub_resource type="TileSet" id=2]
 0/name = "black.png 0"
@@ -267,6 +268,9 @@ margin_bottom = 343.0
 text = "Restart"
 
 [node name="AudioManager" parent="." instance=ExtResource( 12 )]
+
+[node name="DamageNumberManager" type="Node2D" parent="."]
+script = ExtResource( 21 )
 
 [connection signal="pressed" from="CanvasLayer/Win/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Lose/Button" to="." method="_on_Button_pressed"]

@@ -31,6 +31,7 @@ extents = Vector2( 8, 8 )
 [node name="Enemy" type="AnimatedSprite"]
 frames = SubResource( 4 )
 animation = "Right"
+frame = 1
 playing = true
 centered = false
 script = ExtResource( 5 )

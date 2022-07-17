@@ -60,7 +60,9 @@ func try_move(dx, dy):
 				var blocked = false #TODO: fix livis mess
 				for enemy in game.get_enemies():
 					if enemy.tile.x == x && enemy.tile.y == y:
-						enemy.take_damage(self, rolldice(6))
+						var damage_value = rolldice(6)
+						game.get_node("DamageNumberManager").show_value(enemy.position, damage_value, true)
+						enemy.take_damage(self, damage_value)
 						if has_item(0):
 							remove_item(0)
 
@@ -98,8 +100,10 @@ func tween_to(posn : Vector2):
 func take_damage(dam : int):
 	# Reduces health value by given int, if the variable 
 	# is bigger than current health, calls die()
+	
 	if dam - defense < health:
 		health -= dam - defense
+		game.get_node("DamageNumberManager").show_value(position, dam - defense, false)
 		game.update_UI()
 	else:
 		health = 0
