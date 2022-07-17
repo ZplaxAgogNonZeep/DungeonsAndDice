@@ -1,8 +1,6 @@
 extends Node2D
 
 const TILE_SIZE = 16
-onready var empty = preload("res://art/black.png")
-onready var hammer = preload("res://art/hammer.png")
 
 #Level Sizes constants, tweak as needed
 const LEVEL_SIZES = [
@@ -40,19 +38,8 @@ onready var visiblility_map = $VisibilityMap
 func get_player():
 	return $PlayerManager.get_player_if_there()
 
-func get_enemies() -> Array:
+func get_enemies():
 	return $EnemyManager.get_children()
-
-func get_items(type : int) -> Array:
-	if type == 3:
-		return $ItemManager.get_children()
-	else:
-		var item_list = []
-		for i in range($ItemManager.get_child_count()):
-			if $ItemManager.get_child(i).item_type == type:
-				item_list.append($ItemManager.get_child(i))
-		return item_list
-	
 
 # UI Commands ======================================================================================
 
@@ -60,18 +47,6 @@ func update_UI():
 	$CanvasLayer/HPLabel.text = str(get_player().health)
 	$CanvasLayer/ScoreLabel.text = "Score: " + str(score)
 
-	
-	if get_player().has_item(0):
-		print("PLAYER HAS THE ITEM")
-		$CanvasLayer/WeaponSlot.texture = load("res://art/hammer.png")
-	else:
-		$CanvasLayer/WeaponSlot.texture = load("res://art/black.png")
-	
-	if get_player().has_item(1):
-		$CanvasLayer/ShieldSlot.texture = load("res://art/Shield.png")
-	else:
-		$CanvasLayer/ShieldSlot.texture = load("res://art/black.png")
-	
 
 # Game State ---------------------------------------------
 
@@ -108,7 +83,6 @@ func build_level():
 	map.clear()
 	tile_map.clear()
 	$EnemyManager.removeEnemies() 
-	$ItemManager.removeItems()
 	
 	enemy_pathfinding = AStar.new() #NOTE: livi mess
 	
@@ -137,15 +111,13 @@ func build_level():
 	var player_x = start_room.position.x + 1 + randi() % int(start_room.size.x - 2)
 	var player_y = start_room.position.y + 1 + randi() % int(start_room.size.y - 2)
 	player_tile = Vector2(player_x, player_y)
-
+	print("PLAYER TILE IS AT " + str(player_tile * TILE_SIZE))
 	#update_visuals() #Must call after physics is dealt with
 	call_deferred("update_visuals")
 	
 	#Place enemies
 	$EnemyManager.placeEnemies() 
 	
-	#Place items
-	$ItemManager.place_items()
 	
 	#Place end hole
 	var end_room = rooms.back()
