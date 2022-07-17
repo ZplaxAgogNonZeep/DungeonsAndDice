@@ -1,4 +1,4 @@
-extends Sprite
+extends AnimatedSprite
 
 # NOTE:
 # Hitbox node is in group Player
@@ -29,12 +29,16 @@ func _input(event):
 		return
 		
 	if event.is_action("Left"):
+		animation = "WalkLeft"
 		try_move(-1, 0)
 	elif event.is_action("Right"):
+		animation = "WalkRight"
 		try_move(1, 0)
 	elif event.is_action("Up"):
+		animation = "WalkUp"
 		try_move(0, -1)
 	elif event.is_action("Down"):
+		animation = "WalkDown"
 		try_move(0, 1)
 
 func try_move(dx, dy):
@@ -49,7 +53,7 @@ func try_move(dx, dy):
 	$AttackRange.force_raycast_update()
 	
 	if $AttackRange.is_colliding():
-		$AttackRange.get_collider().get_parent(.take_damage(damage))
+		$AttackRange.get_collider().get_parent($AttackRange.get_collider().take_damage(damage))
 	else:
 		match tile_type:
 			Tile.Floor:

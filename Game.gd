@@ -1,6 +1,6 @@
 extends Node2D
 
-const TILE_SIZE = 16
+const TILE_SIZE = 64
 onready var empty = preload("res://art/black.png")
 onready var hammer = preload("res://art/hammer.png")
 
