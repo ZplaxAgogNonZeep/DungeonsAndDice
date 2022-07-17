@@ -1,13 +1,20 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Item/ItemManager.gd" type="Script" id=2]
 [ext_resource path="res://art/Tilesets/DefaultTileSet.tres" type="TileSet" id=3]
+[ext_resource path="res://art/Dice5.png" type="Texture" id=4]
+[ext_resource path="res://art/Dice4.png" type="Texture" id=5]
+[ext_resource path="res://art/Dice3.png" type="Texture" id=6]
+[ext_resource path="res://art/Dice6.png" type="Texture" id=7]
 [ext_resource path="res://art/black.png" type="Texture" id=8]
 [ext_resource path="res://Enemy/EnemyManager.gd" type="Script" id=9]
 [ext_resource path="res://Player/PlayerManager.gd" type="Script" id=10]
 [ext_resource path="res://OptionsMenu.tscn" type="PackedScene" id=11]
 [ext_resource path="res://audio/AudioManager.tscn" type="PackedScene" id=12]
+[ext_resource path="res://art/Dice2.png" type="Texture" id=13]
+[ext_resource path="res://art/Dice1.png" type="Texture" id=14]
+[ext_resource path="res://UI/HitDice.gd" type="Script" id=15]
 
 [sub_resource type="TileSet" id=2]
 0/name = "black.png 0"
@@ -69,24 +76,24 @@ __meta__ = {
 }
 
 [node name="LevelLabel" type="Label" parent="CanvasLayer"]
-margin_right = 74.0
-margin_bottom = 30.0
+margin_left = 672.0
+margin_top = 8.0
+margin_right = 746.0
+margin_bottom = 38.0
 text = "Level:"
 
 [node name="HPLabel" type="Label" parent="CanvasLayer"]
-margin_left = 87.0
-margin_top = 2.0
-margin_right = 161.0
-margin_bottom = 32.0
+margin_left = 8.0
+margin_right = 82.0
+margin_bottom = 30.0
 text = "HP:"
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 0.514
-margin_left = 176.0
-margin_top = 1.0
-margin_right = -379.0
-margin_bottom = -147.04
+margin_left = 520.0
+margin_right = -368.0
+margin_bottom = -269.4
 text = "Score:"
 
 [node name="Win" type="ColorRect" parent="CanvasLayer"]
@@ -140,6 +147,35 @@ position = Vector2( 344, 24 )
 position = Vector2( 424, 24 )
 
 [node name="OptionsMenu" parent="CanvasLayer" instance=ExtResource( 11 )]
+
+[node name="HitDice" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 15 )
+
+[node name="Dice1" type="Sprite" parent="CanvasLayer/HitDice"]
+position = Vector2( 32, 24 )
+texture = ExtResource( 14 )
+
+[node name="Dice2" type="Sprite" parent="CanvasLayer/HitDice"]
+position = Vector2( 72, 24 )
+texture = ExtResource( 13 )
+
+[node name="Dice3" type="Sprite" parent="CanvasLayer/HitDice"]
+position = Vector2( 112, 24 )
+texture = ExtResource( 6 )
+
+[node name="Dice4" type="Sprite" parent="CanvasLayer/HitDice"]
+position = Vector2( 152, 24 )
+texture = ExtResource( 5 )
+
+[node name="Dice5" type="Sprite" parent="CanvasLayer/HitDice"]
+position = Vector2( 192, 24 )
+texture = ExtResource( 4 )
+
+[node name="Dice6" type="Sprite" parent="CanvasLayer/HitDice"]
+position = Vector2( 232, 24 )
+texture = ExtResource( 7 )
 
 [node name="ItemManager" type="Node2D" parent="."]
 script = ExtResource( 2 )
