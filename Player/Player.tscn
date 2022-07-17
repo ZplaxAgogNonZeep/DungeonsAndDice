@@ -42,4 +42,7 @@ collision_mask = 2
 [node name="SoundEnemyAttack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 
+[node name="Inventory" type="Node2D" parent="."]
+visible = false
+
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
