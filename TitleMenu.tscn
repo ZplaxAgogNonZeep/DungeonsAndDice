@@ -8,6 +8,7 @@
 [ext_resource path="res://TitleMenu.gd" type="Script" id=5]
 
 [ext_resource path="res://audio/music/Xelafina - XLLNN - ghostie dance.wav" type="AudioStream" id=6]
+[ext_resource path="res://audio/GhostieDance.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -122,7 +123,6 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.552941, 0.552941, 0.552941, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Play!"
-
 
 [node name="MusicTitleScreen" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
